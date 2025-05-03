@@ -1,0 +1,33 @@
+2025-05-03 18:40:29 UTC
+Windows-10-10.0.19045
+Ren'Py 8.3.7.25031702
+
+Early init took 0.10s
+Loading error handling took 0.23s
+Loading script took 3.07s
+Loading save slot metadata took 0.06s
+Loading persistent took 0.00s
+ - Init at game/gui.rpy:11 took 0.27099 s.
+Running init code took 0.48s
+Loading analysis data took 0.00s
+Analyze and compile ATL took 0.01s
+Reloading save slot metadata took 0.03s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\Administrator\\AppData\\Roaming/RenPy/backups\\Tower of Silence':
+Dump and make backups took 0.07s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.09s
+DPI scale factor: 1.500000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: b"Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.04s
+Save screen analysis took 0.03s
+Prepare screens took 0.19s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.04s

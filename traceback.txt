@@ -1,0 +1,22 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 223, in script
+    jump second_convo_doherty
+ScriptError: could not find label 'second_convo_doherty'.
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 223, in script
+    jump second_convo_doherty
+  File "D:\Program Files\renpy\renpy-8.3.7-sdk\renpy\ast.py", line 1712, in execute
+    rv = renpy.game.script.lookup(target)
+  File "D:\Program Files\renpy\renpy-8.3.7-sdk\renpy\script.py", line 1103, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'second_convo_doherty'.
+
+Windows-10-10.0.19045 AMD64
+Ren'Py 8.3.7.25031702
+Tower of Silence 1.0
+Sat May  3 23:11:42 2025
