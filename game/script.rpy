@@ -53,7 +53,7 @@ image bars_beet = "ironbars_window_beet.png" #View between rooms through barred 
 image room_left = "room_left.png" #View of Beet's POV, a hallway, an iron bar window on the left, the door they came from on the far side of the room. Beet is looking at the camera, the camera is where the puzzle is at
 
 image c2 confused = "C2_confused.png"
-image c2 mask1 = "C2_mask1.png"
+image c2mask1 = "C2_mask1.png"
 image c2 neutral = "C2_neutral.png"
 image c2 sad = "C2_sad.png"
 image c2 scared = "C2_scared.png"
@@ -61,6 +61,13 @@ image c2 serious = "C2_serious.png"
 image c2 shocked = "C2_shocked.png"
 image c2 smile = "C2_smile.png"
 image c2 worried = "C2_worried.png"
+
+image c2 mask neutral = "C2_maskdefault.png"
+image c2 mask sad = "C2_masksad.png"
+image c2 mask scared = "C2_maskscared.png"
+image c2 mask shocked = "C2_maskshocked.png"
+image c2 mask smile = "C2_masksmile.png"
+image c2 mask worried = "C2_maskworried.png"
 
 image stone_piece = "stone_piece.png"
 image flashbackc1 = "flashbackc1.png"
@@ -622,89 +629,110 @@ label chapter2:
 
     scene bgdefault
     show mcworried at left
-    show c2 neutral at right
-    if beet_mask_on:
-        show c2 mask1 at right
+    show c2 mask default at right
     show darkenc2 at right
 
     p "Hey–"
 
     show darkenmc at left
+    hide darkenc2
+    hide c2 mask default
     show c2 shocked at right
+    show c2mask1 at right onlayer overlay
     
-
     e "Huh??"
 
+    hide darkenmc
+    hide c2 shocked 
     show mcneutral at left
     show c1 neutral at right
     p "I’m [player_name], and this is Doherty. We’re not here to hurt you."
 
     hide c1 neutral
-    show darkenmc at left
     show c2 smile at right
-    if beet_mask_on:
-        show c2 mask1 at center
-
+    show c2mask1 at right onlayer overlay
+    show darkenmc at left
     e "Oh… My name is Betelgeus, but you can call me Beet."
+    show c2mask1 at right onlayer overlay
     b "What are you doing here? I thought I was the only one left."
 
     hide darkenmc
     hide mcworried
     hide mcneutral
     show c1 neutral at left
+    show c2mask1 at right onlayer overlay
+    show darkenc2 at right
     d "We’re trying to escape."
 
+    hide darkenc2
+    show darkenc1 at left
+    show c2mask1 at right onlayer overlay
     b "Escape? From where? To where?"
 
     hide c1 neutral
+    hide darkenc1
     show mcworried at left
+    show darkenc2 at right
+    show c2mask1 at right onlayer overlay
     p "I don’t remember much... but I definitely didn’t walk into this dungeon on purpose."
 
     hide darkenc2
+    hide c2
     show darkenmc at left
     show c1 neutral at right
-    d "Same. I’ve been here longer than I can count."
+    d "Same. I’ve been here more days than I could count."
 
     hide darkenmc
     show darkenc1 at right
+    hide c2
 
     p "Wait... what do you mean, 'the only one left'?"
 
     hide darkenc1
     hide c1 neutral
+    show darkenmc at left
+    show c2 smile at right
+    show c2mask1 at right onlayer overlay
 
-    b "There used to be others. Three of us, I think. I don’t remember names. Maybe I forgot them."
+    b "There used to be others. Three of us, I think. I don’t remember names. Maybe I forgot them. But I do remember one of them not speaking, just making noises. Maybe they're deaf?"
 
     hide darkenmc
     hide mcworried
     show c1 worried at left
     show c2 neutral at right
     show darkenc2 at right
+    show c2mask1 at right onlayer overlay
 
     d "I might’ve been one of them."
 
     show darkenc1 at left
-    hide darken c2
+    hide darkenc2
+    show c2 smile at right
+    show c2mask1 at right onlayer overlay
 
-    b "Maybe... It’s been so long. But you two—hearing your voices—it’s nice."
+    b "Maybe... It’s been so long. But with you two— hearing your voices— it’s nice to have company again."
 
     hide darkenc1
     hide c1 worried
     show mcworried at left
     show darkenc2 at right
+    show c2 mask neutral at right 
     p "Yeah, after that long being by yourself, I could imagine."
-
+    
     menu:
         "But we need to get out of here. Do you not want to get out with us?":
             $ trust_c2 += 10
             $ aggression_c2 -= 10
             show darkenmc at left
+            hide darkenc2
+            show c2mask1 at right onlayer overlay
             b "Haha... yeah. I want out. I don’t belong in this place."
             b "But what can I do to help?"
 
         "But I need to get out of here. So can you please help me?":
             $ aggression_c2 += 10
             show darkenmc at left
+            hide darkenc2
             b "..."
             b "Why should I help you again?"
 
@@ -717,27 +745,37 @@ label chapter2:
     d "Don’t say that. There’s a braille puzzle on the console. Maybe you can help."
 
     show darkenc1 at left
-    show c2 neutral at right
-    b "Braille...? Sorry—I never learned it."
+    show c2 worried at right
+    hide darkenc2
+    show c2mask1 at right onlayer overlay
+    b "Braille...? Sorry— I never learned it."
 
     hide darkenc1
     hide c1 worried
 
     show mcshocked at left
+    show c2 sad at right
+    show c2mask1 at right onlayer overlay
     show darkenc2 at right
     p "What?"
 
     show darkenmc at left
     show c2 neutral at right
+    hide darkenc2
+    show c2mask1 at right onlayer overlay
     b "Yeah. I only lost my sight recently. At least, I think it was recent. My memory’s foggy."
 
     show mcsad at left
     show darkenc2 at right
+    show c2mask1 at right onlayer overlay
     p "What happened?"
 
-    show darkenmc at left
     show c2 neutral at right
-    b "I just remember... searing pain. My mother found me afterwards. She said I was lying in a pool of blood."
+    hide darkenc2
+    hide mcshocked
+    show darkenmc at left
+    show c2mask1 at right onlayer overlay
+    b "I just remember... searing pain. My mother found me afterwards. She said I was just... there."
 
     show mcsad at left
     show c1 sad at right
@@ -745,8 +783,18 @@ label chapter2:
     d "...That’s rough."
 
     hide c1 sad
+    show mcworried at left
+    show c2mask1 at right onlayer overlay
+    hide mcsad
+    show darkenmc at left
 
-    b "Since then, life’s been a blur. I can’t see anything. Not even light. Braille? I never got to learn. Couldn’t use it. Never needed to."
+    b "Since then, life’s been a blur. I can’t see anything. Not even light. Braille? I never got to learn. Couldn’t use it. Never needed to, I guess."
+    hide c2
+    show c2 sad at right
+    show c2mask1 at right onlayer overlay
+    b "I guess the fact that I could never understand braille led me to give up. It's frustrating, you know? Everything happened so quick and I'm just forced to adapt to it."
+    show c2mask1 at right onlayer overlay
+    b "It sucks."
 
     show darkenmc at left
     show c1 sad at right
@@ -754,9 +802,7 @@ label chapter2:
 
     hide c1 sad
     show darkenmc at left
-    show c2 neutral at right
-    if beet_mask_on:
-        show c2 mask1 at center
+    show c2 mask smile at right
 
     b "Heh. You get used to it... or you try."
 
@@ -767,11 +813,12 @@ label chapter2:
             $ mental_health_c2 += 5
             show mcsmile at left
             show darkenc2 at right
+            show c2mask1 at right onlayer overlay
             p "Even if you don’t know braille, we’ll figure it out together."
             show darkenmc at left
             show c2 smile at right
-            if beet_mask_on:
-                show c2 mask1 at center
+            hide darkenc2
+            show c2mask1 at right onlayer overlay
             b "Thanks... really."
 
         "You could’ve just said you’re useless.":
@@ -780,11 +827,12 @@ label chapter2:
             $ mental_health_c2 -= 10
             show mcserious at left
             show darkenc2 at right
+            show c2mask1 at right onlayer overlay
             p "So you can’t help. Great."
             show darkenmc at left
             show c2 sad at right
-            if beet_mask_on:
-                show c2 mask1 at center
+            hide darkenc2
+            show c2mask1 at right onlayer overlay
             b "...I didn’t ask for this."
 
         "Why don’t we learn braille together?":
@@ -793,21 +841,26 @@ label chapter2:
             $ mental_health_c2 += 15
             show mcneutral at left
             show darkenc2 at right
+            show c2mask1 at right onlayer overlay
             p "No use arguing. Let’s learn braille together."
             show darkenmc at left
             show c2 neutral at right
-            if beet_mask_on:
-                show c2 mask1 at center
+            show c2mask1 at right onlayer overlay
+            hide darkenc2
             b "You mean it?"
             show mcsmile at left
+            show c2mask1 at right onlayer overlay
+            show darkenc2 at right
             p "Yeah. We’ll learn together."
 
     show mcserious at left
     show darkenc2 at right
+    show c2mask1 at right onlayer overlay
     p "We can describe it to you. You might notice something we miss."
 
     show darkenmc at left
     show c1 smile at right
+    hide c2mask1
     d "Totally worth a shot."
 
     show mcneutral at left
@@ -815,9 +868,10 @@ label chapter2:
     p "Alright, let’s give it a try."
 
     show darkenmc at left
-    show c2 thinking at right
-    if beet_mask_on:
-        show c2 mask1 at center
+    hide c1
+    hide c2
+    hide darkenc2
+    show c2 mask smile at right
 
     b "Alright. Where is this thing?"
 
@@ -827,59 +881,62 @@ label braille_puzzle_1:
     scene braille_puzzle_1
     show mcneutral at left
     show c1 neutral at right
-    if beet_mask_on:
-        show c2 mask1 at center
-    else:
-        show c2 neutral at center
 
     p "Looks like this console uses braille to display a four-digit code. There’s a hint carved into the stone wall nearby."
 
     d "It's a number sequence. Should be easy if we follow the guide."
 
+    hide c1
+    hide c2
+    show darkenmc at left
+    show c2 smile at right
+    show c2mask1 at right onlayer overlay
+
     b "Alright... I’ll try to feel it out too."
+    
+    show c2mask1 at right onlayer overlay
 
     $ braille_answer = renpy.input("What’s the 4-digit pin?", length=4)
     $ braille_answer = braille_answer.strip()
 
-    if braille_answer == "7302":
+    if braille_answer == "0000":
+        show c2 mask smile at right
         p "That worked!"
         $ trust_c2 += 10
         $ mental_health_c2 += 5
         scene bg2door
         hide mcneutral
         hide c1 neutral
-        if beet_mask_on:
-            hide c2 mask1
-        else:
-            hide c2 neutral
         show mcsmile at left
         show c1 smile at right
-        if beet_mask_on:
-            show c2 mask1 at center
-        else:
-            show c2 smile at center
 
         p "The doors… they’re opening."
+        hide mcsmile
+        hide c1
+        show c2 mask smile
         b "Did we do it?"
         jump hallway_split
     else:
+        hide c2
+        show c2 sad at right
+        show c2mask1 at right onlayer overlay
         p "That’s not right..."
         jump braille_puzzle_1_retry
 
 label braille_puzzle_1_retry:
+    show c2mask1 at right onlayer overlay
     menu:
         "Try again":
             jump braille_puzzle_1
         "Give up":
             hide mcneutral
             hide c1 neutral
-            if beet_mask_on:
-                hide c2 mask1
-            else:
-                hide c2 neutral
+            show mcsad at left
+            show darkenmc at left
+            show c2mask1 at right onlayer overlay
             p "(We’ll never get out like this...)"
             $ mental_health_c2 -= 10
-            jump stuck_scene
+            return
 
 label hallway_split:
     scene hallway_split
@@ -888,10 +945,6 @@ label hallway_split:
     p "There’s two paths now…"
 
     show darkenmc at left
-    if beet_mask_on:
-        show c2 mask1 at right
-    else:
-        show c2 neutral at right
 
     b "Let’s not split up. I’ll stay close."
 
@@ -900,10 +953,6 @@ label hallway_split:
     scene bgblack
     hide mcserious
     hide c1 worried
-    if beet_mask_on:
-        hide c2 mask1
-    else:
-        hide c2 neutral
 
     "A sudden slam echoes. The door slams shut behind [player_name] and Doherty—Beet is left on the other side."
 
@@ -912,21 +961,23 @@ label hallway_split:
     show c1 shocked at right
     p "Beet!?"
 
-    show darkenmc at left
-    if beet_mask_on:
-        show c2 mask1 at right
-    else:
-        show c2 shocked at right
+    hide mcshocked
+    hide c1
+    show c2 confused
+    show c2mask1 onlayer overlay
 
     b "What the—!? The door just slammed on me!"
 
     hide darkenmc
+    hide c2
+    show c1 worried at right
     show mcworried at left
-    show darkenc2 at right
+    show darkenc1 at right
     p "Damn it!"
 
-    hide darkenc2
+    hide darkenc1
     show c1 serious at right
+    show darkenmc at left
     d "There’s a window—there!"
 
     scene bars
@@ -937,31 +988,29 @@ label hallway_split:
     scene bg2door
     hide mcshocked
     hide c1 scared
-    if beet_mask_on:
-        show c2 mask1 at center
-    else:
-        show c2 neutral at center
+    show c2 mask smile
 
     b "Yeah… just shaken."
+    show c2mask1 onlayer overlay
+    hide c2mask1
+    show c2 mask neutral
     b "I feel another door open... I’ll check it."
+    "Beet goes through the left door"
 
     scene bars_beet
     show mcserious at left
     show c1 worried at right
-    p "We can see you through this window. It’s barred."
+    p "We can see you through this iron barred window. I think this room will lead to the same exit as ours!"
 
     scene room_left
     hide mcserious
     hide c1 worried
-    if beet_mask_on:
-        show c2 mask1 at center
-    else:
-        show c2 neutral at center
+    show c2 mask smile
 
     b "Heh. Guess I can’t see you back."
 
     scene bgblack
-    hide c2 mask1
+    hide c2mask1
     hide c2 neutral
     "Another heavy slam. The left room’s door shuts tight behind him."
 
@@ -971,10 +1020,7 @@ label hallway_split:
     p "...Wait."
 
     scene room_left
-    if beet_mask_on:
-        show c2 mask1 at center
-    else:
-        show c2 neutral at center
+    show c2 mask worried
 
     b "...Did you hear that?"
 
@@ -992,10 +1038,7 @@ label hallway_split:
     d "Both rooms are closing in!"
 
     scene room_left
-    if beet_mask_on:
-        show c2 mask1 at center
-    else:
-        show c2 scared at center
+    show c2 mask shocked
 
     b "Oh shit! I need to move—now!"
 
@@ -1005,29 +1048,22 @@ label beet_solo_puzzle:
 
     if trust_c2 >= 30 and aggression_c2 <= 40:
         scene braille_2
-        if beet_mask_on:
-            show c2 mask1 at center
-        else:
-            show c2 serious at center
-
+        show c2 mask scared
         b "(You know what... I trust them now.)"
         b "(If I'm going to survive this... I want to do it as me.)"
 
         b "Here goes nothing."
-        $ beet_mask_on = False
-        hide c2 mask1
-        show c2 neutral at center
+        show c2 mask neutral
+        ""
+        show c2 neutral with dissolve
 
         "For the first time, you see him—not as a prisoner or a stranger, but as a person."
-
+        hide c2
+        show c2 serious
         b "Okay... Let’s do this."
 
     else:
         scene braille_2
-        if beet_mask_on:
-            show c2 mask1 at center
-        else:
-            show c2 serious at center
 
         b "(Okay… I’m on my own now. No hints. Just me and this panel.)"
 
@@ -1054,14 +1090,14 @@ label beet_solo_puzzle:
         $ beet_input = renpy.input("Enter the 4-digit code:", length=4)
         $ beet_input = beet_input.strip()
 
-        if beet_input == "9581":
+        if beet_input == "5112":
+            hide c2
+            show c2 smile
             b "I did it!"
             $ trust_c2 += 10
             $ mental_health_c2 += 10
-            scene bg2door
-            show mcsmile at left
-            show c1 smile at right
-            show c2 smile at center
+            scene bgdefault
+            show c2 smile
             b "The door opened... I’m safe."
             jump beet_survives
         else:
@@ -1079,9 +1115,14 @@ label beet_survives:
     scene bgdefault
     show mcsmile at left
     show c1 smile at right
-    show c2 smile at center
-    p "Beet! You’re okay!"
+    hide c2
+    "[player_name] & Doherty" "Beet! You’re okay!"
+    hide mcsmile
+    hide c1
+    show c2 smile
     b "Heh… barely."
+
+    "-GOOD ENDING-"
     return
 
 label bad_ending_beet_refuses:
