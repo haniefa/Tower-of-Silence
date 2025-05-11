@@ -629,14 +629,14 @@ label chapter2:
 
     scene bgdefault
     show mcworried at left
-    show c2 mask default at right
+    show c2 mask neutral at right
     show darkenc2 at right
 
     p "Hey–"
 
     show darkenmc at left
     hide darkenc2
-    hide c2 mask default
+    hide c2 mask neutral
     show c2 shocked at right
     show c2mask1 at right onlayer overlay
     
@@ -879,10 +879,11 @@ label chapter2:
 
 label braille_puzzle_1:
     scene braille_puzzle_1
+    pause
     show mcneutral at left
     show c1 neutral at right
 
-    p "Looks like this console uses braille to display a four-digit code. There’s a hint carved into the stone wall nearby."
+    p "Looks like this console uses braille to display a four-digit code. There’s a hint carved into the sign below."
 
     d "It's a number sequence. Should be easy if we follow the guide."
 
@@ -899,7 +900,7 @@ label braille_puzzle_1:
     $ braille_answer = renpy.input("What’s the 4-digit pin?", length=4)
     $ braille_answer = braille_answer.strip()
 
-    if braille_answer == "0000":
+    if braille_answer == "0101":
         show c2 mask smile at right
         p "That worked!"
         $ trust_c2 += 10
@@ -961,6 +962,7 @@ label hallway_split:
     show c1 shocked at right
     p "Beet!?"
 
+    scene hallway_split
     hide mcshocked
     hide c1
     show c2 confused
@@ -968,6 +970,7 @@ label hallway_split:
 
     b "What the—!? The door just slammed on me!"
 
+    scene bars
     hide darkenmc
     hide c2
     show c1 worried at right
@@ -1048,6 +1051,7 @@ label beet_solo_puzzle:
 
     if trust_c2 >= 30 and aggression_c2 <= 40:
         scene braille_2
+        pause
         show c2 mask scared
         b "(You know what... I trust them now.)"
         b "(If I'm going to survive this... I want to do it as me.)"
@@ -1064,6 +1068,7 @@ label beet_solo_puzzle:
 
     else:
         scene braille_2
+        pause
 
         b "(Okay… I’m on my own now. No hints. Just me and this panel.)"
 
@@ -1090,7 +1095,7 @@ label beet_solo_puzzle:
         $ beet_input = renpy.input("Enter the 4-digit code:", length=4)
         $ beet_input = beet_input.strip()
 
-        if beet_input == "5112":
+        if beet_input == "0314":
             hide c2
             show c2 smile
             b "I did it!"
