@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 160: expected menuitem
-    show mc serious at left_pos
-    ^
+File "game/script.rpy", line 1692: expected ':' not found.
+    label final_chapter
+                       ^
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Sat May  3 22:54:56 2025
+Mon May 12 16:37:00 2025

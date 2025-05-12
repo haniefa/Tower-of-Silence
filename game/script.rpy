@@ -20,15 +20,16 @@ image bgdefault = "BG_Default.png"
 image bgdoor = "BG_door.png"
 image bgaltar = "BG_door+sign.png"
 
-image mcneutral = "MC_neutral.png"
-image mcconfused = "MC_confused.png"
-image mcserious = "MC_Serious.png"
-image mcsmile = "MC_smile.png"
-image mcsad = "MC_sad.png"
-image mcscared = "MC_scared.png"
-image mcshocked = "MC_shocked.png"
-image mcworried = "MC_worried.png"
-image mcblush = "MC_blush.png"
+image mc neutral = "MC_neutral.png"
+image mc confused = "MC_confused.png"
+image mc serious = "MC_Serious.png"
+image mc smile = "MC_smile.png"
+image mc sad = "MC_sad.png"
+image mc scared = "MC_scared.png"
+image mc shocked = "MC_shocked.png"
+image mc worried = "MC_worried.png"
+image mc blush = "MC_blush.png"
+image mc mad = "MC_mad.png"
 
 image scenealtar = "scene_sign.png"
 image scenepuzzle1 = "scene_puzzle1.png"
@@ -47,6 +48,7 @@ image c1 worried = "C1_worried.png"
 
 #chapter 2
 image bg2door = "BG_2_door.png"
+image bg2door_closed = "BG_2_door_closed_1.png"
 image braille_1 = "braille_puzzle_1.png"
 image braille_2 = "braille_puzzle_2.png"
 image hallway_split = "hallway_split.png" #Hall with two separate paths after puzzle 1
@@ -63,6 +65,7 @@ image c2 serious = "C2_serious.png"
 image c2 shocked = "C2_shocked.png"
 image c2 smile = "C2_smile.png"
 image c2 worried = "C2_worried.png"
+image c2 mad = "C2_mad.png"
 
 image c2 mask neutral = "C2_maskdefault.png"
 image c2 mask sad = "C2_masksad.png"
@@ -70,6 +73,7 @@ image c2 mask scared = "C2_maskscared.png"
 image c2 mask shocked = "C2_maskshocked.png"
 image c2 mask smile = "C2_masksmile.png"
 image c2 mask worried = "C2_maskworried.png"
+image c2 mask confused = "C2_maskconfused.png"
 
 image stone_piece = "stone_piece.png"
 image flashbackc1 = "flashbackc1.png"
@@ -78,19 +82,19 @@ image flashbackc1bg = "flashbackc1bg.png"
 #CH3
 image aslchart = "aslchart.png"
 
-image c3confused = "C3_confused.png"
-image c3neutral = "C3_neutral.png"
-image c3scared = "C3_scared.png"
-image c3serious = "C3_serious.png"
-image c3shocked = "C3_shocked.png"
-image c3smile = "C3_smile.png"
-image c3worried = "C3_worried.png"
+image c3 confused = "C3_confused.png"
+image c3 neutral = "C3_neutral.png"
+image c3 scared = "C3_scared.png"
+image c3 serious = "C3_serious.png"
+image c3 shocked = "C3_shocked.png"
+image c3 smile = "C3_smile.png"
+image c3 worried = "C3_worried.png"
 
-image c3maskneutral = "C3_maskneutral.png"
-image c3maskscared = "C3_maskscared.png"
-image c3maskserious = "C3_maskserious.png"
-image c3maskshocked = "C3_maskshocked.png"
-image c3maskworried = "C3_maskworried.png"
+image c3 mask neutral = "C3_maskneutral.png"
+image c3 mask scared = "C3_maskscared.png"
+image c3 mask serious = "C3_maskserious.png"
+image c3 mask shocked = "C3_maskshocked.png"
+image c3 mask worried = "C3_maskworried.png"
 
 # Variables
 default player_name = "..."
@@ -115,8 +119,8 @@ label start:
 
     scene bgblack
 
-    e "I’m alone, shrouded in darkness. I have no memory of who I am or how long I’ve been here. Days? Weeks? Months? I have no idea."
-    e "I’m not hungry, not thirsty. I just know that I don’t belong here. I need to escape."
+    e "I'm alone, shrouded in darkness. I have no memory of who I am or how long I've been here. Days? Weeks? Months? I have no idea."
+    e "I'm not hungry, not thirsty. I just know that I don't belong here. I need to escape."
 
     $ player_name = renpy.input("What should I call myself?")
     $ player_name = player_name.strip()
@@ -124,64 +128,64 @@ label start:
     if player_name == "":
         $ player_name = "Alex"  # default name
 
-    e "I’ll call myself [player_name] from now on."
+    e "I'll call myself [player_name] from now on."
 
     scene bgdefault
-    show mcneutral
+    show mc neutral
 
     p "I stand up, looking around for clues, doors, exits, anything."
 
-    show mcconfused
+    show mc confused
     p "Huh?"
 
     scene bgdoor
-    show mcserious at left
+    show mc serious at left_pos
     p "I see something, a dim light seeping through the cracks of what I assume is a door outside. I step closer."
 
-    p "It’s not locked. I can get out of here."
+    p "It's not locked. I can get out of here."
     
     scene bgblack
     with fade
     pause 0.1
 
     scene bgaltar
-    show mcserious at center
+    show mc serious at center
     p "What the hell? Just another room? Wait— that big-ass door might lead me outside!"
 
-    p "Dammit! It’s locked. What the hell am I supposed to do now?"
+    p "Dammit! It's locked. What the hell am I supposed to do now?"
     scene scenealtar
-    show mcconfused
+    show mc confused
     p "What the hell is this thing?"
     scene scenealtar
     pause
     p "“Stand not alone, for the gate listens only to unity.”?" 
-    show mcserious 
-    p "I can’t NOT stand alone, there’s nobody else in this damn room!"
+    show mc serious 
+    p "I can't NOT stand alone, there's nobody else in this damn room!"
     scene bgdefault
-    show mcsad
+    show mc sad
     "Getting desperate, I frantically look around the room for keys, hidden buttons, levers, anything."
-    show mcserious
+    show mc serious
     "After losing hope, I look around the altar, trying to see what I could do with or to it."
     scene scenealtar
     scene bgaltar
-    show mcshocked
+    show mc shocked
     p "The massive door opened by itself, making a loud noise in the process."
 
     p "A few moments later, the door I came from aggressively shuts."
-    show mcscared
+    show mc scared
     p "I panic and run straight outside."
 
     scene bgblack
-    p "It’s a hallway, dimly lit by candles on the wall. How the hell did I get here? And more importantly, how the hell do I get out?"
+    p "It's a hallway, dimly lit by candles on the wall. How the hell did I get here? And more importantly, how the hell do I get out?"
 
     jump chapter1_continue
 
 label chapter1_continue:
     scene bgdefault
     show c1 mask1
-    p "As I’m walking, I notice a person chained to the wall. Feminine outfits with a tall body and wide shoulder. A girl? A boy? I can’t tell."
+    p "As I'm walking, I notice a person chained to the wall. Feminine outfits with a tall body and wide shoulder. A girl? A boy? I can't tell."
     hide c1 mask1
-    show mcneutral
+    show mc neutral
     menu:
         "Approach":
             $ avoided = False
@@ -196,7 +200,7 @@ label avoid_doherty:
 
 label approach_doherty:
     scene bgdefault
-    show mcserious at left_pos
+    show mc serious at left_pos
     show c1 mask2 at right_pos
 
     show darkenmc at left_pos zorder 10
@@ -204,10 +208,10 @@ label approach_doherty:
     hide darkenmc
 
     show darkenc1 at right_pos zorder 10
-    show mcshocked at left_pos
+    show mc shocked at left_pos
     p "Holy shit!"
-    hide mcshocked
-    show mcserious at left_pos
+    hide mc shocked
+    show mc serious at left_pos
     menu:
         "What the hell is your problem!?":
             $ trust_c1 -= 10
@@ -219,45 +223,45 @@ label approach_doherty:
             show darkenmc at left_pos zorder 10
             e "What is YOUR problem?"
             hide darkenmc
-        "Hey, I’m here to help.":
+        "Hey, I'm here to help.":
             $ trust_c1 += 10
             $ aggression_c1 -= 5
             show darkenc1 at right_pos zorder 10
-            show mcworried  at left_pos
-            p "Hey, I’m here to help."
+            show mc worried  at left_pos
+            p "Hey, I'm here to help."
             hide darkenc1
-            show mcworried  at left_pos
+            show mc worried  at left_pos
             show darkenmc at left_pos zorder 10
             e "Help? Like the others who PUT me in this situation?"
             hide darkenmc
 
-    show mcserious at left_pos
+    show mc serious at left_pos
     show darkenc1 at right_pos zorder 10
-    p "Look, I have no memory of getting here, but I’m sure as hell would like to leave this god forsaken place."
+    p "Look, I have no memory of getting here, but I'm sure as hell would like to leave this god forsaken place."
     p "If you want, I can take you with me, but I need your help in doing so. Look, I can find the keys to unshackle you. It must be around here somewhere, right?"
     hide darkenc1
 
     show c1 mask2 at right_pos
     show darkenmc at left_pos zorder 10
-    e "No thanks. It’s better for me here anyway. I don’t belong anywhere else."
+    e "No thanks. It's better for me here anyway. I don't belong anywhere else."
     hide darkenmc
 
     if avoided:
         menu:
             "What do you mean by that?":
                 $ aggression_c1 -= 5
-                show mcserious at left_pos
+                show mc serious at left_pos
                 show darkenc1 at right_pos zorder 10
                 p "What do you mean by that?"
                 hide darkenc1
             "But I need your help, come on!":
                 $ trust_c1 -= 5
                 $ aggression_c1 += 10
-                show mcserious at left_pos
+                show mc serious at left_pos
                 show darkenc1 at right_pos zorder 10
                 p "But I need your help, come on!"
                 hide darkenc1
-        show mcworried at left_pos
+        show mc worried at left_pos
         show darkenmc at left_pos zorder 10
 
     else:
@@ -265,25 +269,25 @@ label approach_doherty:
             "Okay then, suit yourself.":
                 $ trust_c1 -= 10
                 $ mental_health_c1 -= 10
-                show mcneutral at left_pos
+                show mc neutral at left_pos
                 show darkenc1 at right_pos zorder 10
                 p "Okay then, suit yourself."
                 hide darkenc1
                 jump altar_poem_room
             "What do you mean by that?":
                 $ aggression_c1 -= 5
-                show mcserious at left_pos
+                show mc serious at left_pos
                 show darkenc1 at right_pos zorder 10
                 p "What do you mean by that?"
                 hide darkenc1
             "But I need your help, come on!":
                 $ trust_c1 -= 5
                 $ aggression_c1 += 10
-                show mcserious at left_pos
+                show mc serious at left_pos
                 show darkenc1 at right_pos zorder 10
                 p "But I need your help, come on!"
                 hide darkenc1
-        show mcworried at left_pos
+        show mc worried at left_pos
         show darkenmc at left_pos zorder 10
 
     if not avoided:
@@ -292,7 +296,7 @@ label approach_doherty:
 
         p "..."
         hide c1 mask2
-        hide mcworried
+        hide mc worried
         jump altar_poem_room
     
     elif avoided:
@@ -300,22 +304,22 @@ label approach_doherty:
 
 label altar_poem_room:
     scene bgdefault
-    show mcneutral
-    p "I continue, finding another room, eerily similar to the one before. But there’s only one thing in that room, another altar."
+    show mc neutral
+    p "I continue, finding another room, eerily similar to the one before. But there's only one thing in that room, another altar."
     scene scenepuzzle1
-    show mcconfused
-    p "On top of it, instead of something glowing, it’s a poem, but it looks unfinished."
-    hide mcconfused
+    show mc confused
+    p "On top of it, instead of something glowing, it's a poem, but it looks unfinished."
+    hide mc confused
     pause
-    show mcserious at left
+    show mc serious at left_pos
     p "Masks are made to hide shame"
     p "For someone unable to find themselves"
-    p "Though my appearance doesn’t match my name"
+    p "Though my appearance doesn't match my name"
     p "I am …?"
-    show mcconfused at left
+    show mc confused at left_pos
     p "What the shit is this? This looks like someone deliberately removed the last part. But why? What does this mean?"
-    show mcserious
-    p "Looking around, I saw nothing. And there’s nothing else to check but another big door. I assume the altar is the key to unlocking the big door. Finding no other clues, I walked back to the chained stranger."
+    show mc serious
+    p "Looking around, I saw nothing. And there's nothing else to check but another big door. I assume the altar is the key to unlocking the big door. Finding no other clues, I walked back to the chained stranger."
 
 if not avoided:
     jump second_convo_doherty
@@ -328,33 +332,33 @@ define m = Character("Lady")
 
 label second_convo_doherty:
     scene bgdefault
-    show mcneutral at left_pos
+    show mc neutral at left_pos
     show c1 mask1 at right_pos
     show darkenc1 at right_pos  # MC speaks, darken Doherty
 
     if not avoided:
-        p "Hey, I know you asked me to leave you alone, but I’m quite stuck. Can you please help me out here?"
+        p "Hey, I know you asked me to leave you alone, but I'm quite stuck. Can you please help me out here?"
 
     elif avoided:
         p "Look, I've been in that room already. There's this weird altar and this huge door but I can't find a way to get it to open. Please help me out."
 
     hide darkenc1
     show darkenmc at left_pos  # Doherty speaks, darken MC
-    e "Why ask me? There’s nothing someone like me could do to help you."
+    e "Why ask me? There's nothing someone like me could do to help you."
     hide darkenmc
-    show mcconfused at left_pos
+    show mc confused at left_pos
     show darkenc1 at right_pos  # MC speaks, darken Doherty
-    p "(I look at… him? her? I still don’t know. Their voice is masculine, but their appearance is very feminine. Wait, 'my appearance doesn’t match my name'.)"
-    show mcneutral at left_pos
-    p "What’s your name?"
+    p "(I look at… him? her? I still don't know. Their voice is masculine, but their appearance is very feminine. Wait, 'my appearance doesn't match my name'.)"
+    show mc neutral at left_pos
+    p "What's your name?"
     hide darkenc1
     show darkenmc at left_pos  # Doherty speaks, darken MC
-    e "Why do you want to know? Is it because it’s hard to identify me?"
+    e "Why do you want to know? Is it because it's hard to identify me?"
     hide darkenmc
-    show mcneutral at left_pos
+    show mc neutral at left_pos
     show darkenc1 at right_pos  # MC speaks, darken Doherty
     menu:
-        "It’s a bit weird talking to someone without knowing their name, you know?":
+        "It's a bit weird talking to someone without knowing their name, you know?":
             $ trust_c1 += 10
             $ aggression_c1 -= 5
         "Yes, actually. You have a very manly voice, yet such a soft and feminine appearance":
@@ -370,7 +374,7 @@ label second_convo_doherty:
         "Sit down beside them":
             $ trust_c1 += 10
             $ sit_choice = "beside"
-        "It’s just your name, why can’t you answer it?":
+        "It's just your name, why can't you answer it?":
             $ trust_c1 -= 10
             $ aggression_c1 += 10
             $ sit_choice = "opposite"
@@ -379,20 +383,22 @@ label second_convo_doherty:
             e "..."
             e "Screw you."
             hide darkenmc
-            show mcconfused at left_pos
+            show mc confused at left_pos
             show darkenc1 at right_pos
             p "What the hell?"
-            hide mcconfused
+            hide mc confused
             hide darkenc1
 
-        "It’s okay, I don’t wanna force you.":
+        "It's okay, I don't wanna force you.":
             $ trust_c1 += 10
             $ aggression_c1 -= 5
             $ mental_health_c1 += 5
             $ sit_choice = "beside"
+    hide mc
+    show mc neutral at left_pos
     show darkenmc at left_pos  # Doherty speaks, darken MC
     show c1 mask1 at right_pos
-    d "Doherty. I’m a he."
+    d "Doherty. I'm a he."
     hide darkenmc
     show darkenc1 at right_pos  # Doherty speaks, darken MC
     p "Your name is Doherty?"
@@ -404,44 +410,44 @@ label second_convo_doherty:
         p "(I sit down beside him.)"
 
     show darkenc1 at right_pos
-    p "Do you know how long you’ve been here?"
+    p "Do you know how long you've been here?"
     hide darkenc1
     show darkenmc at left_pos  # Doherty speaks, darken MC
-    d "I don’t. I don’t care. I want to be here. I hate everything and everyone else."
+    d "I don't. I don't care. I want to be here. I hate everything and everyone else."
     hide darkenmc
     show darkenc1 at right_pos  # MC speaks, darken Doherty
-    show mcconfused at left_pos
-    p "What do you mean by ‘everyone else’?"
+    show mc confused at left_pos
+    p "What do you mean by ‘everyone else'?"
     hide darkenc1
     show darkenmc at left_pos  # Doherty speaks, darken MC
-    d "I mean everyone else. Everyone made me this way. They built me, and now they throw me out. It’s like I’m some heartless doll they play with and discard whenever they please."
+    d "I mean everyone else. Everyone made me this way. They built me, and now they throw me out. It's like I'm some heartless doll they play with and discard whenever they please."
     hide darkenmc
     show darkenc1 at right_pos  # MC speaks, darken Doherty    
-    p "They… ‘built’ you?"
+    p "They… ‘built' you?"
     show darkenmc at left_pos  # Doherty speaks, darken MC
     show stone_piece
     hide darkenmc
-    show mcconfused at left_pos
+    show mc confused at left_pos
     p "Wha-...?"
     "While talking, I noticed the piece from the altar in the other room is right next to Doherty. He then passed me it."
-    show mcsmile at left_pos
+    show mc smile at left_pos
     menu:
         "Thank you.":
             $ aggression_c1 -= 5
-        "You had this all this time? Why didn’t you tell me?":
+        "You had this all this time? Why didn't you tell me?":
             $ aggression_c1 += 10
     hide darkenc1
     show darkenmc at left_pos  # Doherty speaks, darken MC
     d "..."
 
     scene bgdefault
-    show mcneutral
+    show mc neutral
     p "(I walk back to the other room with the stone in hand. I then place the stone on the missing part of the poem.)"
     scene scenepuzzle1solved
     pause
     p "\"I am more than an empty shell.\""
     p "(The altar moves to the side, behind it lies a key. I take it and rush to the door.)"
-    show mcneutral
+    show mc neutral
     menu:
         "Do I check on Doherty?":
             jump going_back_to_doherty
@@ -450,26 +456,26 @@ label second_convo_doherty:
 
 label try_key_on_door:
     scene bgdoor
-    show mcserious
+    show mc serious
     p "(I try the key on the doors.)"
-    p "Fuck! It doesn’t fit the hole."
+    p "Fuck! It doesn't fit the hole."
     jump going_back_to_doherty
 
 label going_back_to_doherty:
     scene bgdefault
-    show mcneutral at center
+    show mc neutral at center
     "I turn back to Doherty."
-    hide mcneutral
-    show mcsmile at left_pos
+    hide mc neutral
+    show mc smile at left_pos
     show c1 mask1 at right_pos
     show darkenc1 at right_pos
     p "I think I found the key to unlocking your shackles."
     hide darkenc1
     show darkenmc at left_pos
-    d "Take it away. I don’t need it."
+    d "Take it away. I don't need it."
     hide darkenmc
     show darkenc1 at right_pos
-    show mcworried at left_pos
+    show mc worried at left_pos
     p "But—"
     hide darkenc1
     show c1 mask2
@@ -487,25 +493,25 @@ label going_back_to_doherty:
     scene bgblack
     "*SLAP*"
     show flashbackc1
-    m "GIRLS WEAR GIRLS’ CLOTHING! And you are a girl, aren’t you?"
-    k "B-but… I’m a—"
+    m "GIRLS WEAR GIRLS' CLOTHING! And you are a girl, aren't you?"
+    k "B-but… I'm a—"
     scene bgblack
     "*SLAP*"
     show flashbackc1
-    m "YOU ARE A GIRL, AREN’T YOU!?"
+    m "YOU ARE A GIRL, AREN'T YOU!?"
     k "Sobbing, Yes, I am."
-    m "Good girl. Now, what’s your name?"
+    m "Good girl. Now, what's your name?"
     k "...Doherty."
     scene bgblack
     "*SLAP*"
     show flashbackc1
-    m "DOHERTY IS A BOY’S NAME! Your name is ‘Dorothy’, okay?"
+    m "DOHERTY IS A BOY'S NAME! Your name is ‘Dorothy', okay?"
     d "Nods"
-    m "Good. You’ll meet your new father soon enough, my dear."
+    m "Good. You'll meet your new father soon enough, my dear."
 
     "What the fuck am I experiencing?!"
     scene bgdefault
-    show mcworried at left_pos
+    show mc worried at left_pos
     show c1 mask1 at right_pos
     show darkenc1 at right_pos
     "Panting"
@@ -514,33 +520,33 @@ label going_back_to_doherty:
     d "(Shakes head)"
     show darkenc1 at right_pos
 
-    p "So why don’t you just… rebel against them?"
+    p "So why don't you just… rebel against them?"
     hide darkenc1
     show darkenmc at left_pos
     d "I tried."
     scene bgdefault
     "Doherty begins to unbutton his dress."
-    show mcblush
+    show mc blush
     p "W-what are you??!"
-    hide mcblush
+    hide mc blush
     "Doherty shows his bruised back, full with scars."
-    d "She won’t let me."
-    show mcworried at left_pos
+    d "She won't let me."
+    show mc worried at left_pos
     show c1 mask1 at right_pos
     show darkenc1 at right_pos
     p "Holy shit…"
     hide darkenc1
     show darkenmc at left_pos
-    d "I’ve always hated the way I am. I can’t be a boy because I would get hit by my mother. But every time I put on a dress, my stepfather would touch me. Nothing was ever the right thing. I don’t know who I am."
+    d "I've always hated the way I am. I can't be a boy because I would get hit by my mother. But every time I put on a dress, my stepfather would touch me. Nothing was ever the right thing. I don't know who I am."
     hide darkenmc
     menu:
-        "Let’s just get out of here, together. Forget your mother.":
+        "Let's just get out of here, together. Forget your mother.":
             $ trust_c1 += 10
             $ mental_health_c1 += 10
             $ ending_choice = "good"
-            show mcworried at left_pos
+            show mc worried at left_pos
             show darkenc1 at right_pos
-            p "Let’s just get out of here, together. Forget your mother."
+            p "Let's just get out of here, together. Forget your mother."
             show darkenmc at left_pos
             hide darkenc1
             d "I-"
@@ -549,37 +555,37 @@ label going_back_to_doherty:
             d "..."
             show darkenmc
 
-        "I’m so sorry. I could never imagine the pain you’ve endured…":
+        "I'm so sorry. I could never imagine the pain you've endured…":
             $ trust_c1 += 10
             $ aggression_c1 -= 10
             $ mental_health_c1 += 10
             $ ending_choice = "good"
-            show mcsad at left_pos
+            show mc sad at left_pos
             show darkenc1 at right_pos
-            p "I’m so sorry. I could never imagine the pain you’ve endured…"
-        "The past is in the past. Now let’s go!":
+            p "I'm so sorry. I could never imagine the pain you've endured…"
+        "The past is in the past. Now let's go!":
             $ mental_health_c1 -= 10
             $ ending_choice = "bad"
-            show mcsmile at left_pos
+            show mc smile at left_pos
             show darkenc1 at right_pos
-            p "The past is in the past. Now let’s go!"
+            p "The past is in the past. Now let's go!"
 
 
 
     if ending_choice == "good":
-        show mcworried at left_pos
+        show mc worried at left_pos
         show c1 mask1 at right_pos
         show darkenmc at left_pos
-        d "I don’t have siblings. I don’t remember my father. All I know is torture. Everyone treats me like garbage. Like I’m some sort of toy to dress up and humiliate."
+        d "I don't have siblings. I don't remember my father. All I know is torture. Everyone treats me like garbage. Like I'm some sort of toy to dress up and humiliate."
         hide darkenmc
         show darkenc1 at right_pos
         p "Oh my god… Doherty, I—"
         hide darkenc1
         show darkenmc at left_pos
-        d "It doesn’t matter anymore. I’m here, and this is where I want to be."
+        d "It doesn't matter anymore. I'm here, and this is where I want to be."
         hide darkenmc 
         show darkenc1 at right_pos
-        show mcsmile at left_pos
+        show mc smile at left_pos
         p "But we can go away, be free. Be who you are without judgment. Please, join me."
     
     elif ending_choice == "bad":
@@ -588,13 +594,13 @@ label going_back_to_doherty:
     if trust_c1 > 50 and aggression_c1 < 50 and mental_health_c1 > 60:
         scene bgdefault
         show c1 mask1 at right_pos
-        show mcsmile at left_pos
+        show mc smile at left_pos
         show darkenmc at left_pos
         d "..."
         show c1 sad at right_pos
         "Doherty takes off his mask"
         show c1 smile at right_pos
-        d "Let’s go."
+        d "Let's go."
         "(We both walk to the door. It opens by itself.)"
         jump chapter1_complete
 
@@ -603,7 +609,7 @@ label going_back_to_doherty:
         p "(I waited for an hour, then sat down. Suddenly, I felt a stinging pain in my neck. Doherty with a glass shard in hand, bloody.)"
         scene bgdefault
         show c1 mask2
-        d "IT’S SO EASY FOR YOU! YOU DON’T EVEN CARE ABOUT ME!"
+        d "IT'S SO EASY FOR YOU! YOU DON'T EVEN CARE ABOUT ME!"
         jump bad_ending_1
 
     elif mental_health_c1 <= 40:
@@ -611,7 +617,7 @@ label going_back_to_doherty:
         "(I waited for an hour, I then sat down, waiting for Doherty to come. I closed my eyes for a moment.)"
         "(A few moments went by, then Doherty came into the room with a shard of glass in his hand.)"
         scene bgdefault
-        show mcworried at left_pos
+        show mc worried at left_pos
         show darkenc1 at right_pos
         p "Uh... Doherty? What is that for?"
         show darkenmc at left_pos
@@ -645,130 +651,130 @@ label chapter2:
 
     p "(Something about this place feels... wrong.)"
 
-    "Eventually, we reach a new chamber. It’s different. Two large doors stand on opposite walls. Between them—a strange console embedded into the stone."
+    "Eventually, we reach a new chamber. It's different. Two large doors stand on opposite walls. Between them—a strange console embedded into the stone."
 
     scene bg2door with dissolve
     "Next to the console, we see someone. Just sitting still. Silent. Masked—like Doherty once was."
 
     scene bgdefault
-    show mcworried at left
-    show c2 mask neutral at right
-    show darkenc2 at right
+    show mc worried at left_pos
+    show c2 mask neutral at right_pos
+    show darkenc2 at right_pos
 
     p "Hey–"
 
-    show darkenmc at left
+    show darkenmc at left_pos
     hide darkenc2
     hide c2 mask neutral
-    show c2 shocked at right
+    show c2 shocked at right_pos
     show c2mask1 at right onlayer overlay
     
     e "Huh??"
 
     hide darkenmc
     hide c2 shocked 
-    show mcneutral at left
-    show c1 neutral at right
-    p "I’m [player_name], and this is Doherty. We’re not here to hurt you."
+    show mc neutral at left_pos
+    show c1 neutral at right_pos
+    p "I'm [player_name], and this is Doherty. We're not here to hurt you."
 
     hide c1 neutral
-    show c2 smile at right
+    show c2 smile at right_pos
     show c2mask1 at right onlayer overlay
-    show darkenmc at left
+    show darkenmc at left_pos
     e "Oh… My name is Betelgeus, but you can call me Beet."
     show c2mask1 at right onlayer overlay
     b "What are you doing here? I thought I was the only one left."
 
     hide darkenmc
-    hide mcworried
-    hide mcneutral
-    show c1 neutral at left
+    hide mc worried
+    hide mc neutral
+    show c1 neutral at left_pos
     show c2mask1 at right onlayer overlay
-    show darkenc2 at right
-    d "We’re trying to escape."
+    show darkenc2 at right_pos
+    d "We're trying to escape."
 
     hide darkenc2
-    show darkenc1 at left
+    show darkenc1 at left_pos
     show c2mask1 at right onlayer overlay
     b "Escape? From where? To where?"
 
     hide c1 neutral
     hide darkenc1
-    show mcworried at left
-    show darkenc2 at right
+    show mc worried at left_pos
+    show darkenc2 at right_pos
     show c2mask1 at right onlayer overlay
-    p "I don’t remember much... but I definitely didn’t walk into this dungeon on purpose."
+    p "I don't remember much... but I definitely didn't walk into this dungeon on purpose."
 
     hide darkenc2
     hide c2
-    show darkenmc at left
-    show c1 neutral at right
-    d "Same. I’ve been here more days than I could count."
+    show darkenmc at left_pos
+    show c1 neutral at right_pos
+    d "Same. I've been here more days than I could count."
 
     hide darkenmc
-    show darkenc1 at right
+    show darkenc1 at right_pos
     hide c2
 
     p "Wait... what do you mean, 'the only one left'?"
 
     hide darkenc1
     hide c1 neutral
-    show darkenmc at left
-    show c2 smile at right
+    show darkenmc at left_pos
+    show c2 smile at right_pos
     show c2mask1 at right onlayer overlay
 
-    b "There used to be others. Three of us, I think. I don’t remember names. Maybe I forgot them. But I do remember one of them not speaking, just making noises. Maybe they're deaf?"
+    b "There used to be others. Three of us, I think. I don't remember names. Maybe I forgot them. But I do remember one of them not speaking, just making noises. Maybe they're deaf?"
 
     hide darkenmc
-    hide mcworried
-    show c1 worried at left
-    show c2 neutral at right
-    show darkenc2 at right
+    hide mc worried
+    show c1 worried at left_pos
+    show c2 neutral at right_pos
+    show darkenc2 at right_pos
     show c2mask1 at right onlayer overlay
 
-    d "I might’ve been one of them."
+    d "I might've been one of them."
 
-    show darkenc1 at left
+    show darkenc1 at left_pos
     hide darkenc2
-    show c2 smile at right
+    show c2 smile at right_pos
     show c2mask1 at right onlayer overlay
 
-    b "Maybe... It’s been so long. But with you two— hearing your voices— it’s nice to have company again."
+    b "Maybe... It's been so long. But with you two— hearing your voices— it's nice to have company again."
 
     hide darkenc1
     hide c1 worried
-    show mcworried at left
-    show darkenc2 at right
-    show c2 mask neutral at right 
+    show mc worried at left_pos
+    show darkenc2 at right_pos
+    show c2 mask neutral at right_pos 
     p "Yeah, after that long being by yourself, I could imagine."
     
     menu:
         "But we need to get out of here. Do you not want to get out with us?":
             $ trust_c2 += 10
             $ aggression_c2 -= 10
-            show darkenmc at left
+            show darkenmc at left_pos
             hide darkenc2
             show c2mask1 at right onlayer overlay
-            b "Haha... yeah. I want out. I don’t belong in this place."
+            b "Haha... yeah. I want out. I don't belong in this place."
             b "But what can I do to help?"
 
         "But I need to get out of here. So can you please help me?":
             $ aggression_c2 += 10
-            show darkenmc at left
+            show darkenmc at left_pos
             hide darkenc2
             b "..."
             b "Why should I help you again?"
 
-    b "Besides, there’s not much a blind guy like me can do."
+    b "Besides, there's not much a blind guy like me can do."
     hide darkenmc
 
-    hide mcworried
-    show c1 worried at left
-    show darkenc2 at right
-    d "Don’t say that. There’s a braille puzzle on the console. Maybe you can help."
+    hide mc worried
+    show c1 worried at left_pos
+    show darkenc2 at right_pos
+    d "Don't say that. There's a braille puzzle on the console. Maybe you can help."
 
-    show darkenc1 at left
-    show c2 worried at right
+    show darkenc1 at left_pos
+    show c2 worried at right_pos
     hide darkenc2
     show c2mask1 at right onlayer overlay
     b "Braille...? Sorry— I never learned it."
@@ -776,125 +782,134 @@ label chapter2:
     hide darkenc1
     hide c1 worried
 
-    show mcshocked at left
-    show c2 sad at right
+    show mc shocked at left_pos
+    show c2 sad at right_pos
     show c2mask1 at right onlayer overlay
-    show darkenc2 at right
+    show darkenc2 at right_pos
     p "What?"
 
-    show darkenmc at left
-    show c2 neutral at right
+    show darkenmc at left_pos
+    show c2 neutral at right_pos
     hide darkenc2
     show c2mask1 at right onlayer overlay
-    b "Yeah. I only lost my sight recently. At least, I think it was recent. My memory’s foggy."
+    b "Yeah. I only lost my sight recently. At least, I think it was recent. My memory's foggy."
 
-    show mcsad at left
-    show darkenc2 at right
+    show mc sad at left_pos
+    show darkenc2 at right_pos
+    hide darkenmc
     show c2mask1 at right onlayer overlay
     p "What happened?"
 
-    show c2 neutral at right
+    show c2 neutral at right_pos
     hide darkenc2
-    hide mcshocked
-    show darkenmc at left
+    hide mc shocked
+    show mc worried at left_pos
+    show darkenmc at left_pos
     show c2mask1 at right onlayer overlay
     b "I just remember... searing pain. My mother found me afterwards. She said I was just... there."
 
-    show mcsad at left
-    show c1 sad at right
+    show mc sad at left_pos
+    show c1 sad at right_pos
+    hide darkenmc
     p "..."
-    d "...That’s rough."
+    d "...That's rough."
 
     hide c1 sad
-    show mcworried at left
+    show mc worried at left_pos
     show c2mask1 at right onlayer overlay
-    hide mcsad
-    show darkenmc at left
+    show darkenmc at left_pos
 
-    b "Since then, life’s been a blur. I can’t see anything. Not even light. Braille? I never got to learn. Couldn’t use it. Never needed to, I guess."
+    b "Since then, life's been a blur. I can't see anything. Not even light. Braille? I never got to learn. Couldn't use it. Never needed to, I guess."
     hide c2
-    show c2 sad at right
+    show c2 sad at right_pos
     show c2mask1 at right onlayer overlay
     b "I guess the fact that I could never understand braille led me to give up. It's frustrating, you know? Everything happened so quick and I'm just forced to adapt to it."
     show c2mask1 at right onlayer overlay
     b "It sucks."
 
-    show darkenmc at left
-    show c1 sad at right
+    show darkenmc at left_pos
+    show c1 sad at right_pos
     d "That sounds... horrible."
 
     hide c1 sad
-    show darkenmc at left
-    show c2 mask smile at right
+    show darkenmc at left_pos
+    show c2 mask smile at right_pos
 
     b "Heh. You get used to it... or you try."
 
+    hide darkenmc
     menu:
-        "We’ll figure it out together.":
+        "We'll figure it out together.":
             $ trust_c2 += 10
             $ aggression_c2 -= 5
             $ mental_health_c2 += 5
-            show mcsmile at left
-            show darkenc2 at right
+            show mc smile at left_pos
+            show darkenc2 at right_pos
             show c2mask1 at right onlayer overlay
-            p "Even if you don’t know braille, we’ll figure it out together."
-            show darkenmc at left
-            show c2 smile at right
+            p "Even if you don't know braille, we'll figure it out together."
+            show darkenmc at left_pos
+            show c2 smile at right_pos
             hide darkenc2
             show c2mask1 at right onlayer overlay
             b "Thanks... really."
 
-        "You could’ve just said you’re useless.":
+        "You could've just said you're useless.":
             $ aggression_c2 += 15
             $ trust_c2 -= 15
             $ mental_health_c2 -= 10
-            show mcserious at left
-            show darkenc2 at right
+            show mc serious at left_pos
+            show darkenc2 at right_pos
             show c2mask1 at right onlayer overlay
-            p "So you can’t help. Great."
-            show darkenmc at left
-            show c2 sad at right
+            p "So you can't help. Great."
+            show darkenmc at left_pos
+            show c2 sad at right_pos
             hide darkenc2
             show c2mask1 at right onlayer overlay
-            b "...I didn’t ask for this."
+            b "...I didn't ask for this."
 
-        "Why don’t we learn braille together?":
+        "Why don't we learn braille together?":
             $ trust_c2 += 20
             $ aggression_c2 -= 5
             $ mental_health_c2 += 15
-            show mcneutral at left
-            show darkenc2 at right
+            show mc neutral at left_pos
+            show darkenc2 at right_pos
             show c2mask1 at right onlayer overlay
-            p "No use arguing. Let’s learn braille together."
-            show darkenmc at left
-            show c2 neutral at right
+            p "No use arguing. Let's learn braille together."
+            show darkenmc at left_pos
+            show c2 neutral at right_pos
             show c2mask1 at right onlayer overlay
             hide darkenc2
             b "You mean it?"
-            show mcsmile at left
+            show mc smile at left_pos
+            hide darkenmc
             show c2mask1 at right onlayer overlay
-            show darkenc2 at right
-            p "Yeah. We’ll learn together."
+            show darkenc2 at right_pos
+            p "Yeah. We'll learn together."
 
-    show mcserious at left
-    show darkenc2 at right
-    show c2mask1 at right onlayer overlay
+    hide mc
+    hide darkenmc
+    hide darkenc2
+    hide c2
+    show c2 mask neutral at right_pos
+    show mc serious at left_pos
+    show darkenc2 at right_pos
     p "We can describe it to you. You might notice something we miss."
 
-    show darkenmc at left
-    show c1 smile at right
+    show darkenmc at left_pos
+    show c1 smile at right_pos
     hide c2mask1
     d "Totally worth a shot."
 
-    show mcneutral at left
-    show darkenc2 at right
-    p "Alright, let’s give it a try."
+    show mc neutral at left_pos
+    show darkenc2 at right_pos
+    hide darkenmc
+    p "Alright, let's give it a try."
 
-    show darkenmc at left
+    show darkenmc at left_pos
     hide c1
     hide c2
     hide darkenc2
-    show c2 mask smile at right
+    show c2 mask smile at right_pos
 
     b "Alright. Where is this thing?"
 
@@ -903,48 +918,51 @@ label chapter2:
 label braille_puzzle_1:
     scene braille_puzzle_1
     pause
-    show mcneutral at left
-    show c1 neutral at right
+    show mc neutral at left_pos
+    show c1 neutral at right_pos
+    hide darkenmc
 
-    p "Looks like this console uses braille to display a four-digit code. There’s a hint carved into the sign below."
+    p "Looks like this console uses braille to display a four-digit code. There's a hint carved into the sign below."
 
     d "It's a number sequence. Should be easy if we follow the guide."
 
     hide c1
     hide c2
-    show darkenmc at left
-    show c2 smile at right
+    show darkenmc at left_pos
+    show c2 smile at right_pos
     show c2mask1 at right onlayer overlay
 
-    b "Alright... I’ll try to feel it out too."
+    b "Alright... I'll try to feel it out too."
     
-    show c2mask1 at right onlayer overlay
+    hide c2
+    hide mc
+    hide darkenmc
 
-    $ braille_answer = renpy.input("What’s the 4-digit pin?", length=4)
+
+    $ braille_answer = renpy.input("What's the 4-digit pin?", length=4)
     $ braille_answer = braille_answer.strip()
 
     if braille_answer == "0101":
-        show c2 mask smile at right
+        show c2 mask smile at right_pos
         p "That worked!"
-        $ trust_c2 += 10
         $ mental_health_c2 += 5
         scene bg2door
-        hide mcneutral
+        hide mc neutral
         hide c1 neutral
-        show mcsmile at left
-        show c1 smile at right
+        show mc smile at left_pos
+        show c1 smile at right_pos
 
-        p "The doors… they’re opening."
-        hide mcsmile
+        p "The doors… they're opening."
+        hide mc smile
         hide c1
         show c2 mask smile
         b "Did we do it?"
         jump hallway_split
     else:
         hide c2
-        show c2 sad at right
+        show c2 sad at right_pos
         show c2mask1 at right onlayer overlay
-        p "That’s not right..."
+        p "That's not right..."
         jump braille_puzzle_1_retry
 
 label braille_puzzle_1_retry:
@@ -953,96 +971,95 @@ label braille_puzzle_1_retry:
         "Try again":
             jump braille_puzzle_1
         "Give up":
-            hide mcneutral
+            hide mc neutral
             hide c1 neutral
-            show mcsad at left
-            show darkenmc at left
+            show mc sad at left_pos
+            show darkenmc at left_pos
             show c2mask1 at right onlayer overlay
-            p "(We’ll never get out like this...)"
+            p "(We'll never get out like this...)"
             $ mental_health_c2 -= 10
             return
 
 label hallway_split:
     scene hallway_split
-    show mcserious at left
-    show c1 worried at right
-    p "There’s two paths now…"
+    show mc serious at left_pos
+    show c2 mask worried at right_pos
+    p "There's two paths now…"
 
-    show darkenmc at left
+    show darkenmc at left_pos
 
-    b "Let’s not split up. I’ll stay close."
+    b "Let's not split up. I'll stay close."
 
     "The group steps toward the right door."
 
     scene bgblack
-    hide mcserious
+    hide mc serious
     hide c1 worried
 
     "A sudden slam echoes. The door slams shut behind [player_name] and Doherty—Beet is left on the other side."
 
     scene bars
-    show mcshocked at left
-    show c1 shocked at right
+    show mc shocked at left_pos
+    show c1 shocked at right_pos
     p "Beet!?"
 
-    scene hallway_split
-    hide mcshocked
+    scene bg2door_closed
+    hide mc shocked
     hide c1
-    show c2 confused
-    show c2mask1 onlayer overlay
+    show c2 mask confused
 
     b "What the—!? The door just slammed on me!"
 
     scene bars
     hide darkenmc
     hide c2
-    show c1 worried at right
-    show mcworried at left
-    show darkenc1 at right
+    show c1 worried at right_pos
+    show mc worried at left_pos
+    show darkenc1 at right_pos
     p "Damn it!"
 
     hide darkenc1
-    show c1 serious at right
-    show darkenmc at left
-    d "There’s a window—there!"
+    show c1 serious at right_pos
+    show darkenmc at left_pos
+    d "There's an iron window in this room that connects to the other!"
 
     scene bars
-    show mcshocked at left
-    show c1 scared at right
+    show mc worried at left_pos
+    show c1 worried at right_pos
     p "Beet! You good?"
 
-    scene bg2door
-    hide mcshocked
-    hide c1 scared
+    scene bg2door_closed
+    hide mc worried
+    hide c1 worried
     show c2 mask smile
 
     b "Yeah… just shaken."
     show c2mask1 onlayer overlay
     hide c2mask1
     show c2 mask neutral
-    b "I feel another door open... I’ll check it."
+    b "I feel another door open... I'll check it."
     "Beet goes through the left door"
 
     scene bars_beet
-    show mcserious at left
-    show c1 worried at right
+    show mc serious at left_pos
+    show c1 worried at right_pos
     p "We can see you through this iron barred window. I think this room will lead to the same exit as ours!"
 
     scene room_left
-    hide mcserious
+    hide mc serious
     hide c1 worried
     show c2 mask smile
 
-    b "Heh. Guess I can’t see you back."
+    b "Heh. Guess I can't see you back."
 
     scene bgblack
     hide c2mask1
     hide c2 neutral
-    "Another heavy slam. The left room’s door shuts tight behind him."
+    "Another heavy slam. The left room's door shuts tight behind him."
 
     scene bars_beet
-    show mcshocked at left
-    show c1 shocked at right
+    show mc shocked at left_pos
+    show c1 shocked at right_pos
     p "...Wait."
 
     scene room_left
@@ -1053,13 +1070,13 @@ label hallway_split:
     "Metal creaks above."
 
     scene bars_beet
-    show mcshocked at left
-    show c1 shocked at right
-    show darkenc1 at right
-    p "The ceiling! It’s moving!"
+    show mc shocked at left_pos
+    show c1 shocked at right_pos
+    show darkenc1 at right_pos
+    p "The ceiling! It's moving!"
 
-    show darkenmc at left
-    show c1 scared at right
+    show darkenmc at left_pos
+    show c1 scared at right_pos
     hide darkenc1
     d "Both rooms are closing in!"
 
@@ -1072,7 +1089,7 @@ label hallway_split:
 
 label beet_solo_puzzle:
 
-    if trust_c2 >= 30 and aggression_c2 <= 40:
+    if trust_c2 >= 50 and aggression_c2 <= 5:
         scene braille_2
         pause
         show c2 mask scared
@@ -1087,31 +1104,38 @@ label beet_solo_puzzle:
         "For the first time, you see him—not as a prisoner or a stranger, but as a person."
         hide c2 serious
         show c2 serious
-        b "Okay... Let’s do this."
+        b "Okay... Let's do this."
         hide c2 serious
 
     else:
         scene braille_2
         pause
 
-        b "(Okay… I’m on my own now. No hints. Just me and this panel.)"
+        b "(Okay… I'm on my own now. No hints. Just me and this panel.)"
 
-        if trust_c2 < 30 or aggression_c2 > 40:
-            b "...You know what? No."
-            b "And you know what else? I'm keeping the mask on."
-            b "You never saw me—not really—and I think I prefer it that way."
-            b "You guys aren’t nice at all. I don’t think I’m gonna help you."
-            b "Figure it out yourselves."
+        show c2 mad
+        show c2mask1 onlayer overlay
+        b "...You know what? No."
+        show c2mask1 onlayer overlay
+        b "And you know what else? I'm keeping the mask on."
+        show c2mask1 onlayer overlay
+        b "You never saw me—not really—and I think I prefer it that way."
+        show c2mask1 onlayer overlay
+        b "You guys aren't nice at all. I don't think I'm gonna help you."
+        show c2mask1 onlayer overlay
+        b "Figure it out yourselves!"
+        show c2mask1 onlayer overlay
 
-            d "Wait—Beet!"
+        scene bars_beet
+        show mc shocked at left_pos
+        show c1 shocked at right_pos
+        d "Wait—Beet!"
 
-            scene bgblack
-            "Without Beet’s help, the console stayed locked. The ceiling kept falling..."
-            "And we couldn’t escape."
+        scene bgblack
+        "Without Beet's help, the console stayed locked. The ceiling kept falling..."
+        "And we couldn't escape."
 
-            jump bad_ending_beet_refuses
-
-        b "(Focus. Breathe. You can do this.)"
+        jump bad_ending_beet_refuses
 
     $ attempt_left = 3
 
@@ -1127,11 +1151,11 @@ label beet_solo_puzzle:
             $ mental_health_c2 += 10
             scene bgdefault
             show c2 smile
-            b "The door opened... I’m safe."
+            b "The door opened... I'm safe."
             jump beet_survives
         else:
             $ attempt_left -= 1
-            b "Dammit! It’s wrong!"
+            b "Dammit! It's wrong!"
             if attempt_left <= 0:
                 scene bgblack
                 "The ceiling crushed down before he could try again."
@@ -1142,11 +1166,11 @@ label beet_solo_puzzle:
 
 label beet_survives:
     scene bgdefault
-    show mcsmile at left
-    show c1 smile at right
+    show mc smile at left_pos
+    show c1 smile at right_pos
     hide c2
-    "[player_name] & Doherty" "Beet! You’re okay!"
-    hide mcsmile
+    "[player_name] & Doherty" "Beet! You're okay!"
+    hide mc smile
     hide c1
     show c2 smile
     b "Heh… barely."
@@ -1162,39 +1186,63 @@ label bad_ending_beet_crushed:
     "-BAD ENDING: BEET WAS CRUSHED-"
     return
 
+# Chapter 3
+
 label chapter3:
 
-    scene bgdefault
-    with fade
+    scene bgblack
+    "We finally managed to escape those death puzzle room things. Makes me wonder what this place actually is and what it's for."
+    "As we continue to walk towards what I assume are the exits, things seem to calm down a bit. No traps, no puzzles, nothing. Just stairs and hallways."
+    "Another floor... When will this end?"
+    "Oh well, at least I'm not alone"
 
+
+    scene bgdefault
+    show c1 smile
+    with fade
+    "I got an unexpected friend in Doherty"
+
+    hide c1
+    show c2 smile
+    with fade
+    "And Beet trusts me now, too."
+
+    scene bgblack
+    with fade
+    "My job now is, not just to find and exit out of this place, but to make them feel comfortable with who they are, in the real world once we get there."
+
+    scene bgdefault
     show c1 neutral at left_pos
     show c2 neutral at right_pos
     show darkenc1 at left_pos
-    b "Finally... another floor."
+    with fade
+    b "-Sigh- Another floor."
     hide darkenc1
     show darkenc2 at right_pos
     d "Look. There's something on the floor."
     hide darkenc2
     hide c1 neutral
     hide c2 neutral
-    show mcserious
+    show mc serious
     p "..."
 
     scene aslchart
     pause
 
-    show mcserious at left_pos
+    show mc serious at left_pos
     show c2 neutral at right_pos
     show darkenc2 at right_pos
     p "Looks like... an ASL alphabet guide. Neatly drawn and easy to understand."
     hide darkenc2
     show darkenmc at left_pos
+    hide c2
+    show c2 smile at right_pos
     b "Oh? Remember someone I mentioned before? Yeah, the deaf one. Maybe this belonged to them."
     hide darkenmc
-    hide mcserious
+    hide mc serious
     show darkenc2 at right_pos
     show c1 neutral at left_pos
-    d "Throw it away. It’s probably just trash."
+    d "Throw it away. It's probably just trash."
     hide darkenc2
     show darkenc1 at left_pos
     b "Better to memorize a few. Who knows, it might be useful later."
@@ -1222,56 +1270,132 @@ label continue_ch3:
     scene bgdoor
     with fade
 
-    show c3maskneutral
+    show c3 mask neutral
     e "..."
-    hide c3maskneutral
-    show mcsmile
+    hide c3 mask neutral
+    show mc smile
     p "Excuse me?"
-    hide mcsmile
-    show c3maskneutral
+    hide mc smile
+    show c3 mask neutral
     "..."
-    hide c3maskneutral
-    show mcconfused
+    hide c3 mask neutral
+    show mc confused
     p "Hello?"
-    hide mcconfused
+    hide mc confused
     menu:
         "What do you do?"
         "Shout into her ear":
             $ trust_c3 -= 10
             $ aggression_c3 += 10
             $ mental_health_c3 -= 5
+            show mc mad at left_pos
+            hide c3
+            show c3 mask neutral at right_pos
+            show darkenc3 at right_pos
+            p "HEY!"
+            hide mc
+            show mc serious at left_pos
+            show darkenmc at left_pos
+            hide c3
+            show c3 mask scared at right_pos
+            e "!!!"
+            hide c3
+            hide darkenc3
+            hide mc
+            show mc scared at left_pos
+            show darkenmc at left_pos
+            show c2 mad at right_pos
+            b "Why the hell would you do that!?"
+            hide c2
+            hide darkenmc
+            hide mc
             jump wrong_approach
         "Tap her shoulder":
             $ trust_c3 += 10
             $ aggression_c3 -= 5            
-            jump wrong_approach
+            jump right_approach
         "Forcefully remove her earmuffs":
             $ trust_c3 -= 10
             $ aggression_c3 += 10
             $ mental_health_c3 -= 5
+            hide c3
+            show c3 mask scared
+            e "!!!"
+            hide c3
+            show mc neutral at left_pos
+            show darkenmc at left_pos
+            show c2 neutral at right_pos
+            b "What'd you do?"
+            hide darkenmc
+            show darkenc2 at right_pos
+            p "I took her earmuffs off."
+            hide darkenc2
+            show darkenmc at left_pos
+            show c2 neutral at right_pos
+            b "Forcefully?"
+            hide darkenmc
+            show darkenc2 at right_pos
+            p "Uhh... yeah?"
+            hide mc
+            show mc scared at left_pos
+            show darkenmc at left_pos
+            hide darkenc2
+            hide c2
+            show c2 mad at right_pos
+            b "Why the hell would you do that!?"
+            b "Give it back to them!"
+            scene bgblack
+            "I gave them back to her just like Beet asked."
+            scene bgdoor
             jump wrong_approach
 
-label wrong_approach:
-
-    show c3maskworried at left_pos
+label right_approach:
+    $ trust_c3 += 10
+    $ aggression_c3 -= 5
+    show c3 mask worried at left_pos
     show darkenc3 at left_pos
     show c1 serious at right_pos
     d "Maybe she's the one Beet mentioned... the deaf one?"
     show darkenc1 at right_pos
     hide darkenc3
-    hide c3maskworried
+    hide c3 mask worried
     show c2 confused at left_pos
-    b "I guess so. I could only sense someone was nearby. Without sound, I can’t really tell."
+    b "I guess so. I could only sense someone was nearby. Without sound, I can't really tell."
     show darkenc2 at left_pos
     hide darkenc1
     hide c1 serious
     show c1 worried at right_pos
-    d "Damn... I don’t have a pen to talk to her."
+    d "Damn... I don't have a pen to talk to her."
     show c2 serious at left_pos
     hide darkenc2
     show darkenc1 at right_pos
-    b "That’s why I told you to memorize that guide earlier. Well, [player_name]? Try using it."
+    b "That's why I told you to memorize that guide earlier. Well, [player_name]? Try using it."
     scene bgdefault
+    jump deafmenu
+
+label wrong_approach:
+    $ trust_c3 -= 5
+    $ aggression_c3 += 15
+    show c3 mask worried at left_pos
+    show darkenc3 at left_pos
+    show c1 serious at right_pos
+    d "Maybe she's the one Beet mentioned... the deaf one?"
+    show darkenc1 at right_pos
+    hide darkenc3
+    hide c3 mask worried
+    show c2 confused at left_pos
+    b "I guess so. I could only sense someone was nearby. Without sound, I can't really tell."
+    show darkenc2 at left_pos
+    hide darkenc1
+    hide c1 serious
+    show c1 worried at right_pos
+    d "Damn... I don't have a pen to talk to her."
+    show c2 serious at left_pos
+    hide darkenc2
+    show darkenc1 at right_pos
+    b "That's why I told you to memorize that guide earlier. Well, [player_name]? Try using it."
+    scene bgdefault
+    jump deafmenu
     
 label deafmenu:
     menu:
@@ -1291,13 +1415,13 @@ label deafmenu:
 
 label girl_unresponsive:
 
-    show c3maskneutral
+    show c3 mask neutral
     "She stares at you without a word."
     jump deafmenu
 
 label girl_understands:
 
-    show c3maskneutral
+    show c3 mask neutral
 
     call screen asl_dialogue
 
@@ -1323,31 +1447,32 @@ screen asl_dialogue():
 label asl_response:
     $ response = renpy.call_screen("asl_dialogue")
     if response == "right":
-        show c3maskneutral
+        show c3 mask neutral
         d "She seems fine.."
         $ trust_c3 += 10
         $ aggression_c3 -= 5 
         jump claraconvo
     elif response == "angry":
-        show c3maskserious
+        show c3 mask serious
         d "She seems angry.."
         $ trust_c3 -= 10
         $ aggression_c3 += 10
         $ mental_health_c3 -= 5
-        jump asl_dialogue
+        jump girl_understands
     else:
-        show c3maskworried
+        show c3 mask worried
         d "Is that even a language..."
         $ trust_c3 -= 10
         $ mental_health_c3 -= 5
-        jump asl_dialogue
+        jump girl_understands
 
 #di sini masih perlu if else kalo trust dan aggression di titik tertentu, bikin label baru bad ending dibunuh atau clara bunuh diri
+# Tapi aku cape :')
 
 label claraconvo:
     scene bgdefault
-    show mcsmile at right_pos
-    show c3maskneutral at left_pos
+    show mc smile at right_pos
+    show c3 mask neutral at left_pos
     "Since then, they started to communicate in sign language, with Doherty speaking in words to make sure Beet still in the same boat."
     show darkenc3 at left_pos
     p "So.. What's your name?"
@@ -1356,27 +1481,87 @@ label claraconvo:
     c "I'm Clara."
     show darkenc3 at left_pos
     hide darkenmc
-    p "So.. Clara. We're trying to get to the top of the tower. Can you help us?"
+    p "So.. Clara. We're trying to get to the top of the tower in hopes we could find an exit. Can you help us?"
     "She nods softly."
-    hide mcsmile
+    hide mc smile
     show c1 confused at right_pos
-    d "I'm sorry but.. Can I ask... Are you just deaf or you "
+    d "I'm sorry but.. Can I ask... Are you just deaf or you...?"
 
     "..."
     "She lowers her head. Then slowly, she opens her mouth."
 
+    hide darkenc3
+    show darkenc1 at right_pos
     c "...m-my.. v-voice.. is weird..."
 
-    d "(laughs) Hah... what even was that supposed to be?"
+    hide c1
+    show darkenc3 at left_pos
+    show c1 smile at right_pos
+    d "(laughs) Haha! What the hell's that supposed to be? You sound like a comedian played back on a broken radio!"
 
-    show c3maskworried
+    menu:
+        "How do you respond?"
+        "Ask Doherty to stop":
+            $ trust_c3 += 10
+            $ aggression_c3 -= 5
+            hide mc
+            hide c1
+            hide c2
+            hide c3
+            hide darkenc1
+            hide darkenc2
+            hide darkenc3
+            show mc serious at left_pos
+            show c1 sad at right_pos
+            show darkenc1 at right_pos
+            p "Hey quit it!"
+            hide mc
+            hide c1
+            hide c2
+            hide c3
+            hide darkenc1
+            hide darkenc2
+            hide darkenc3
+        "Let Doherty make fun of her":
+            $ trust_c3 -= 10
+            $ aggression_c3 += 10
+            $ mental_health_c3 -= 15
+            hide mc
+            hide c1
+            hide c2
+            hide c3
+            hide darkenc1
+            hide darkenc2
+            hide darkenc3
+            show c2 serious at left_pos
+            show c1 sad at right_pos
+            show darkenc1 at right_pos
+            b "Hey quit it!"
+            hide c2
+            hide c1
+            hide darkenc1
+            show c2 serious at right_pos
+            show mc sad at left_pos
+            show darkenmc at left_pos
+            b "You're seriously not gonna do anything about that?"
+            hide mc
+            hide c2
+            hide darkenmc
+
+    show c3 mask worried
     "Her expression fades. She pulls out her small notebook."
 
     p "Wait..."
 
+    scene bgblack
+    with fade
+    "As she pulled out her notebook, I got transported again, just like how it was with Doherty."
+    "I started hearing unfamiliar voices again."
+
     scene cutscenec3
 
-    "Haha what is this? Are you expecting us to learn all of those?"
+    e "Haha what is this? Are you expecting us to learn all of those? For YOU? Get a grip!"
+    p "Is this her past?"
 
     scene bgblack
 
@@ -1384,14 +1569,194 @@ label claraconvo:
 
     scene cutscenec3
 
-    c "n-no.. p-p.. please.."
-    "What the hell is that voice? That's so weird and ugly hahaha!"
+    c "n-no.. p-p.. plea--...zh..."
+    e "What the hell is that voice? It's so weird and ugly hahaha!"
+    e "Someone grab some tape and tape her mouth shut! Her voice is gonna make me puke!"
+    p "No, please stop it! Stop bullying that poor girl!"
 
     scene bgblack
     pause
+    
+    "As Clara shows more and more, it became even clearer how her past was."
+    "All those bullying, all of her spent tears."
+    "Poor girl..."
+    "This world is too mean to her."
+    show mc serious
+    with fade
+    "We have to help her!"
 
     scene bgdefault
-    #lanjutin aj
+    show mc worried at left_pos
+    show c3 mask worried at right_pos
+    with fade
 
+    "I sign to her"
+    show darkenc3 at right_pos
+
+    "Clara, I'm so sorry you went through all of that."
+
+    hide darkenc3
+
+    "Clara begins to sob."
+
+    menu:
+        "I offer her a hug":
+            hide c3
+            hide mc
+            show mc smile at left_pos
+            show c3 mask neutral at right_pos
+            "I reached out to her, offering her a hug."
+            "She came to me and hugged me back."
+            "I feel like she only needed company, someone who understands her"
+            hide c3
+            hide mc
+        "I signed her to please stop crying":
+            hide c3
+            hide mc
+            show mc neutral at left_pos
+            show c3 mask worried at right_pos
+            show darkenc3 at right_pos
+            "I sign to her"
+            p "Clara, please stop crying."
+            "A few moments later, Clara stopped."
+            hide c3
+            hide mc
+
+    
     jump ending_scene
 
+label ending_scene:
+    if aggression_c3 >= 5 or mental_health_c3 <= 60:
+        jump bad_ending_clara
+
+    else:
+        scene bgdefault
+
+        show mc smile at left_pos
+        show c3 mask worried at right_pos
+        show darkenc3 at right_pos
+
+        "I sign to her again, still looking at the ASL sheet we found previously."
+        p "Hey, you are no longer alone. We are friends. Your friends."
+
+        show darkenmc at left_pos
+        hide darkenc3
+        hide c3
+        show c3 mask neutral at right_pos
+
+        "She then takes off her mask."
+        hide c3
+        hide mc
+        hide darkenmc
+        show c3 mask neutral
+        ""
+        hide c3
+        show c3 smile
+        with dissolve
+        ""
+        hide c3
+        show mc blush at left_pos
+        show c1 scared at right_pos
+        "[player_name] & Doherty" "!!!"
+
+        hide mc
+        hide c1
+        show c3 grateful
+        "Sh-angk... yiu--!"
+
+        hide c3
+        show c1 smile
+        d "Wow, she looks prettier than I could've ever been."
+
+        hide c1
+        show c1 smile at left_pos
+        show c2 confused at right_pos
+        b "What happened? Did she take of her mask? Dammit I wish I could see her!"
+
+        hide c1
+        hide c2
+        show mc smile at left_pos
+        show c3 smile at right_pos
+        show darkenc3 at right_pos
+        "I sign to her agan"
+        p "So, do you want to find a way out of here, with us?"
+        hide c3
+        show c3 serious at right_pos
+        "She wrote down on her notebook, which I then read out."
+        hide mc
+        hide darkenc3
+        show mc confused at left_pos
+        show darkenmc at left_pos
+        c "There is no exit for me. I am stuck here. Maybe there is an exit for you. I will help you three!"
+        hide mc
+        hide darkenmc
+        hide c3
+        show c2 confused at left_pos
+        show c1 confused at right_pos
+        show mc confused
+        "Everyone " "Huh?"
+        hide c1
+        hide c2
+        p "What do you mean by that, Clara?"
+
+        hide mc
+        show c2 serious
+        b "Could it be that she knew why she's here in the first place?"
+
+        hide c2
+        show c1 serious
+
+        "Doherty starts to sign to her"
+        d "Do you remember anything about your past or how you got here?"
+
+        hide c1
+        show c3 neutral
+        "Clara nods"
+        
+        scene bgblack
+        "Before we could ask any more questions, the door opened."
+        "Fearing it might close in just a few moments, I grab Clara's hand, Doherty grabs Beet's hand, and the four of us rush towards the door."
+        ""
+        "As expected, the door closed behind us."
+        "We barely managed to escape."
+
+        jump final_chapter
+
+
+
+label bad_ending_clara:
+    scene bgdefault
+    show c3 mask neutral
+    with fade
+
+    "Clara wrote something in her notebook."
+    "She then passed the notebook to us."
+
+    hide c3
+    show mc sad at left_pos
+    show c1 serious at right_pos
+    p "\"I'm... sorry..?\" Why?"
+    "We then look back towards Clara, her pen in her hand, up against her neck."
+    hide mc
+    hide c1
+    show mc shocked at left_pos
+    show c1 shocked at right_pos
+    "[player_name] & Doherty" "CLARA NO!"
+
+    scene bgblack
+    "We were too late. She stabbed herself in the throat. It didn't kill her instantly, she died painfully and slowly. There was nothing we could've done. There were no medical equipment nearby."
+
+    b "What happened?"
+
+    "-BAD ENDING-"
+    "Tip: Try to be nicer to Clara"
+
+    jump continue_ch3
+
+
+label final_chapter:
+    scene bgdefault
+    "While walking, I asked her about the details of her memories. What brought us here."
+
+
+    return
