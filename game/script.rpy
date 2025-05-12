@@ -97,6 +97,8 @@ image c3 mask serious = "C3_maskserious.png"
 image c3 mask shocked = "C3_maskshocked.png"
 image c3 mask worried = "C3_maskworried.png"
 
+image cutscenec3 = "cutscenec3.png"
+
 # Variables
 default player_name = "..."
 default trust_c1 = 50
@@ -1450,12 +1452,14 @@ label asl_response:
     if response == "right":
         show c3 mask neutral
         d "She seems fine.."
+        p "Yeah it says 'Can we ask you something?'"
         $ trust_c3 += 10
         $ aggression_c3 -= 5 
         jump claraconvo
     elif response == "angry":
         show c3 mask serious
         d "She seems angry.."
+        p "Maybe I was too rude.. I was saying 'Say something, are you deaf?"
         $ trust_c3 -= 10
         $ aggression_c3 += 10
         $ mental_health_c3 -= 5
@@ -1463,13 +1467,15 @@ label asl_response:
     else:
         show c3 mask worried
         d "Is that even a language..."
+        p "It's 'oiiaiaoiiiai'"
+        b "...What?"
         $ trust_c3 -= 10
         $ mental_health_c3 -= 5
         jump girl_understands
 
 #di sini masih perlu if else kalo trust dan aggression di titik tertentu, bikin label baru bad ending dibunuh atau clara bunuh diri
 # Tapi aku cape :')
-
+# yawes gini aja
 label claraconvo:
     scene bgdefault
     show mc smile at right_pos
