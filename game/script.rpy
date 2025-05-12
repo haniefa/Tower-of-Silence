@@ -1,6 +1,6 @@
 ﻿# file: script.rpy
 
-define e = Character("???")
+define e= Character("???")
 define p = Character("[player_name]")
 define d = Character("Doherty")
 define b = Character("Betelgeuse")
@@ -19,6 +19,7 @@ image bgblack = "#000"
 image bgdefault = "BG_Default.png"
 image bgdoor = "BG_door.png"
 image bgaltar = "BG_door+sign.png"
+image final_room = "BG_final_room.png"
 
 image mc neutral = "MC_neutral.png"
 image mc confused = "MC_confused.png"
@@ -30,6 +31,8 @@ image mc shocked = "MC_shocked.png"
 image mc worried = "MC_worried.png"
 image mc blush = "MC_blush.png"
 image mc mad = "MC_mad.png"
+image mc sad = "MC_sad.png"
+image mc grateful = "MC_grateful.png"
 
 image scenealtar = "scene_sign.png"
 image scenepuzzle1 = "scene_puzzle1.png"
@@ -98,6 +101,11 @@ image c3 mask shocked = "C3_maskshocked.png"
 image c3 mask worried = "C3_maskworried.png"
 
 image cutscenec3 = "cutscenec3.png"
+
+image doherty = "CG_c1_story.png"
+image beet = "CG_c2_story.png"
+image clara = "CG_c3_story.png"
+image player = "CG_mc_story.png"
 
 # Variables
 default player_name = "..."
@@ -1763,7 +1771,180 @@ label bad_ending_clara:
 
 label final_chapter:
     scene bgdefault
+    with dissolve
     "While walking, I asked her about the details of her memories. What brought us here."
+    
+    show c3 neutral
+    "Clara signed while also struggling to say what she's signing out loud."
+    c "You know my story, right? All that bullying never stopped. I gave up."
+    hide c3
+    
+    show c2 neutral at right_pos
+    show c1 neutral at left_pos
+    c "After that, here I am. I suddenly woke up, with him and her in the same room."
+    
+    show mc shocked
+    p "Holy shit!"
 
+    hide mc
+    "I then turn towards Doherty and Beet who doesn't seem that suprised."
+
+    hide c1
+    hide c2
+
+    show mc worried
+    "Both of you knew?"
+
+    show darkenmc
+    show c1 worried at left_pos
+    show c2 neutral at right_pos
+    show darkenc2 at right_pos
+
+    d "Maybe I just forgot. But that doesn't seem unbelievable. I've always wanted to end my suffering. I just... don't recall it ever happening. I guess it happened already."
+
+    hide darkenc2
+    show darkenc1 at left_pos
+
+    b "What? So we're here because we died? Ohh thank makes sense now, how we're never hungry or thirsty, how it feels like it's been a long time, and yet nothing seemed to have changed."
+
+    show darkenc2 at right_pos
+    hide mc
+    show mc worried # Kalo udah ada dia nangis, ganti ini jadi mc crying
+    hide darkenmc
+
+    p "...No...There's no way. I haven't died yet! I'm sure of it."
+
+    hide c1
+    hide c2
+    hide mc
+    hide darkenc1
+    hide darkenc2
+
+    show c3 worried
+
+    c "Hey, it's okay. Maybe you're brought here to help us find peace."
+
+    hide c3
+    show c1 smile at left_pos
+    show c2 smile at right_pos
+    show darkenc2 at right_pos
+
+    d "Yeah, look at me. I didn't trust you, or anyone else before for what they've done to me. And yet, here we are. You've helped me overcome my struggles."
+
+    hide darkenc2
+    show darkenc1 at left_pos
+    b "That's right! You helped me go through my frustration of not being able to accept my newfound disability. Well, even if it was because our lives were on the line. Or \"lives\" I should say."
+
+    hide darkenc1
+    hide c2
+    show c3 smile at right_pos
+    d "And I'm sure you've shown Clara that there are people who will still care and be there for her, even if her voice is weird or whatever."
+    hide c3
+    hide c1
+    show c1 smile
+    d "You're the only one who showed us all of that."
+    
+    hide c1
+    show mc smile # Ini change to mc grateful
+    "Sobbing."
+    p "You guys... Thank you."
+
+    scene final_room
+    with fade
+
+    "We arrived at what looks to be the final room in this tower. There are no more doors, no more stairs. Just an altar and a strange symbol on the floor. This might be the way out."
+
+    show mc serious
+
+    p "This looks like the end. That altar is similar to the one I found when I first started moving."
+    p "This states \"true friends surround those who yearn to reach some place greater than this\"."
+
+    hide mc
+    show c2 smile
+    b "I'm guessing we hold hands and surround you, and then you'll just... teleport back to the real world?"
+
+    hide c2
+    show c2 smile at right_pos
+    show darkenc2 at right_pos
+    show mc worried at left_pos
+
+    p "...But I just made friends in you guys... I don't want to leave you here."
+
+    hide c2
+    hide darkenc2
+    show c1 smile at right_pos
+    show darkenmc at left_pos
+
+    d "I hope when you die of old age, or whatever natural causes that will cause your death, you have the chance to go back here with us. And don't worry, we'll always be here anyway."
+
+    scene bgblack
+    with fade
+    "Doherty, Betelgeuse and Clara hold hands and surrounds me. A few moments later, a bright beam appeared from the ground, engulfing me."
+
+    scene final_room
+    show mc smile # ganti jadi mc grateful
+    with dissolve
+
+    "Sobbing"
+    p "I will miss you guys"
+
+    show c3 smile
+    show c1 smile at left_pos
+    show c2 smile at right_pos
+    "..."
+    "Everyone " "We will miss you too. May we meet again some day."
+
+    show darkenc3
+    show darkenc1 at left_pos
+    b "But not too soon, I hope!"
+
+    hide c1, c2, c3, darkenc1, darkenc3
+    show mc smile # ganti jadi mc grateful
+
+    "We have a little giggle."
+    show mc smile at left_pos # ganti jadi mc grateful
+    show c3 grateful at right_pos
+    "As I was about to teleport, Clara suddenly gave me a hug"
+
+    hide mc
+    hide c3
+    show c1 smile at left_pos
+    show c2 smile
+    show c3 grateful at right_pos
+    "Everyone else followed."
+    "These people..."
+
+    scene bgblack
+    with dissolve
+    scene doherty
+    with dissolve
+    "Doherty, gave up by slicing his throat with a shard of broken glass from a mirror in his room."
+
+    scene bgblack
+    with dissolve
+    scene beet
+    with dissolve
+    "Betelgeuse, gave up by jumping off of his office building's highest floor."
+    
+    scene bgblack
+    with dissolve
+    scene clara
+    with dissolve
+    "And Clara, gave up by puncturing her neck with her pen in front of her bullies at school."
+
+    scene bgblack
+    with dissolve
+    "Nobody helped them."
+    "Nobody cared for them."
+
+    scene player
+    with dissolve
+    "What am I doing?"
+    "Why am I giving up?"
+    "My life still has meaning."
+    "I can help people like them."
+    "I won't let my bi-polar disorder get the best of me!"
+
+    jump credits
 
     return
