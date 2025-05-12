@@ -1,34 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 935, in script
-    with behind
-TypeError: got an unexpected keyword argument 'old_widget'
+  File "game/script.rpy", line 1396, in script
+    jump ending_scene
+ScriptError: could not find label 'ending_scene'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 935, in script
-    with behind
-  File "C:\Users\Arry\Downloads\renpy-8.3.7-sdk\renpy\ast.py", line 1374, in execute
-    renpy.exports.with_statement(trans, paired=paired)
-  File "C:\Users\Arry\Downloads\renpy-8.3.7-sdk\renpy\exports\statementexports.py", line 257, in with_statement
-    return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "C:\Users\Arry\Downloads\renpy-8.3.7-sdk\renpy\display\core.py", line 1581, in do_with
-    return self.interact(trans_pause=True,
-  File "C:\Users\Arry\Downloads\renpy-8.3.7-sdk\renpy\display\core.py", line 2218, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "C:\Users\Arry\Downloads\renpy-8.3.7-sdk\renpy\display\core.py", line 2669, in interact_core
-    trans = instantiate_transition(None, old_root, layers_root)
-  File "C:\Users\Arry\Downloads\renpy-8.3.7-sdk\renpy\display\core.py", line 2578, in instantiate_transition
-    trans = self.ongoing_transition[layer](
-  File "C:\Users\Arry\Downloads\renpy-8.3.7-sdk\renpy\atl.py", line 623, in __call__
-    new_scope = signature.apply(args, kwargs, partial=True, apply_defaults=False)
-  File "C:\Users\Arry\Downloads\renpy-8.3.7-sdk\renpy\parameter.py", line 384, in apply
-    raise TypeError(
-TypeError: got an unexpected keyword argument 'old_widget'
+  File "game/script.rpy", line 1396, in script
+    jump ending_scene
+  File "D:\Program Files\renpy\renpy-8.3.7-sdk\renpy\ast.py", line 1712, in execute
+    rv = renpy.game.script.lookup(target)
+  File "D:\Program Files\renpy\renpy-8.3.7-sdk\renpy\script.py", line 1103, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'ending_scene'.
 
-Windows-10-10.0.22631 AMD64
+Windows-10-10.0.19045 AMD64
 Ren'Py 8.3.7.25031702
 Tower of Silence 1.0
-Sun May 11 15:20:24 2025
+Mon May 12 14:00:20 2025

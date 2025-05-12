@@ -4,10 +4,12 @@ define e = Character("???")
 define p = Character("[player_name]")
 define d = Character("Doherty")
 define b = Character("Betelgeuse")
+define c = Character("Clara")
 
 image darkenmc = "mc_darken.png"
 image darkenc1 = "C1_darken.png"
 image darkenc2 = "C2_darken.png"
+image darkenc3 = "C3_darken.png"
 
 define left_pos = Position(xalign=0.0, yalign=1.0)
 define right_pos = Position(xalign=1.0, yalign=1.0)
@@ -73,6 +75,23 @@ image stone_piece = "stone_piece.png"
 image flashbackc1 = "flashbackc1.png"
 image flashbackc1bg = "flashbackc1bg.png"
 
+#CH3
+image aslchart = "aslchart.png"
+
+image c3confused = "C3_confused.png"
+image c3neutral = "C3_neutral.png"
+image c3scared = "C3_scared.png"
+image c3serious = "C3_serious.png"
+image c3shocked = "C3_shocked.png"
+image c3smile = "C3_smile.png"
+image c3worried = "C3_worried.png"
+
+image c3maskneutral = "C3_maskneutral.png"
+image c3maskscared = "C3_maskscared.png"
+image c3maskserious = "C3_maskserious.png"
+image c3maskshocked = "C3_maskshocked.png"
+image c3maskworried = "C3_maskworried.png"
+
 # Variables
 default player_name = "..."
 default trust_c1 = 50
@@ -82,6 +101,10 @@ default mental_health_c1 = 100
 default trust_c2 = 50
 default aggression_c2 = 0
 default mental_health_c2 = 100
+
+default trust_c3 = 50
+default aggression_c3 = 0
+default mental_health_c3 = 100
 
 default beet_mask_on = True
 default beet_timer = 30.0
@@ -1062,9 +1085,10 @@ label beet_solo_puzzle:
         show c2 neutral with dissolve
 
         "For the first time, you see him—not as a prisoner or a stranger, but as a person."
-        hide c2
+        hide c2 serious
         show c2 serious
         b "Okay... Let’s do this."
+        hide c2 serious
 
     else:
         scene braille_2
@@ -1128,7 +1152,7 @@ label beet_survives:
     b "Heh… barely."
 
     "-GOOD ENDING-"
-    return
+    jump chapter3
 
 label bad_ending_beet_refuses:
     "-BAD ENDING: YOU LOST HIS TRUST-"
@@ -1137,3 +1161,237 @@ label bad_ending_beet_refuses:
 label bad_ending_beet_crushed:
     "-BAD ENDING: BEET WAS CRUSHED-"
     return
+
+label chapter3:
+
+    scene bgdefault
+    with fade
+
+    show c1 neutral at left_pos
+    show c2 neutral at right_pos
+    show darkenc1 at left_pos
+    b "Finally... another floor."
+    hide darkenc1
+    show darkenc2 at right_pos
+    d "Look. There's something on the floor."
+    hide darkenc2
+    hide c1 neutral
+    hide c2 neutral
+    show mcserious
+    p "..."
+
+    scene aslchart
+    pause
+
+    show mcserious at left_pos
+    show c2 neutral at right_pos
+    show darkenc2 at right_pos
+    p "Looks like... an ASL alphabet guide. Neatly drawn and easy to understand."
+    hide darkenc2
+    show darkenmc at left_pos
+    b "Oh? Remember someone I mentioned before? Yeah, the deaf one. Maybe this belonged to them."
+    hide darkenmc
+    hide mcserious
+    show darkenc2 at right_pos
+    show c1 neutral at left_pos
+    d "Throw it away. It’s probably just trash."
+    hide darkenc2
+    show darkenc1 at left_pos
+    b "Better to memorize a few. Who knows, it might be useful later."
+    hide darkenc1
+    hide c1 neutral
+    hide c2 neutral
+    call screen asl_chart_screen
+
+    screen asl_chart_screen():
+        add "aslchart.png"
+        text "Did you memorize it?" xalign 0.5 yalign 0.9
+        textbutton "Yes" action Return("yes") xalign 0.4 yalign 0.95
+        textbutton "No" action Return("no") xalign 0.6 yalign 0.95
+
+label after_asl_chart:
+    $ result = renpy.call_screen("asl_chart_screen")
+    if result == "no":
+        jump asl_chart_screen  # restart the ASL scene
+    else:
+        jump continue_ch3
+
+
+label continue_ch3:
+
+    scene bgdoor
+    with fade
+
+    show c3maskneutral
+    e "..."
+    hide c3maskneutral
+    show mcsmile
+    p "Excuse me?"
+    hide mcsmile
+    show c3maskneutral
+    "..."
+    hide c3maskneutral
+    show mcconfused
+    p "Hello?"
+    hide mcconfused
+    menu:
+        "What do you do?"
+        "Shout into her ear":
+            $ trust_c3 -= 10
+            $ aggression_c3 += 10
+            $ mental_health_c3 -= 5
+            jump wrong_approach
+        "Tap her shoulder":
+            $ trust_c3 += 10
+            $ aggression_c3 -= 5            
+            jump wrong_approach
+        "Forcefully remove her earmuffs":
+            $ trust_c3 -= 10
+            $ aggression_c3 += 10
+            $ mental_health_c3 -= 5
+            jump wrong_approach
+
+label wrong_approach:
+
+    show c3maskworried at left_pos
+    show darkenc3 at left_pos
+    show c1 serious at right_pos
+    d "Maybe she's the one Beet mentioned... the deaf one?"
+    show darkenc1 at right_pos
+    hide darkenc3
+    hide c3maskworried
+    show c2 confused at left_pos
+    b "I guess so. I could only sense someone was nearby. Without sound, I can’t really tell."
+    show darkenc2 at left_pos
+    hide darkenc1
+    hide c1 serious
+    show c1 worried at right_pos
+    d "Damn... I don’t have a pen to talk to her."
+    show c2 serious at left_pos
+    hide darkenc2
+    show darkenc1 at right_pos
+    b "That’s why I told you to memorize that guide earlier. Well, [player_name]? Try using it."
+    scene bgdefault
+    
+label deafmenu:
+    menu:
+        "What will you do?"
+        "Are you the deaf person he mentioned?":
+            $ trust_c3 -= 10
+            $ mental_health_c3 -= 5
+            jump girl_unresponsive
+        "Can you not hear us or speak at all?":
+            $ trust_c3 -= 10
+            $ mental_health_c3 -= 5
+            jump girl_unresponsive
+        "Start signing using ASL":
+            $ trust_c3 += 10
+            $ aggression_c3 -= 5 
+            jump girl_understands
+
+label girl_unresponsive:
+
+    show c3maskneutral
+    "She stares at you without a word."
+    jump deafmenu
+
+label girl_understands:
+
+    show c3maskneutral
+
+    call screen asl_dialogue
+
+screen asl_dialogue():
+    frame:
+        xalign 0.5
+        yalign 0.5
+        has vbox
+        spacing 15
+
+        imagebutton:
+            idle "opsi1.png"
+            action Return("right")
+
+        imagebutton:
+            idle "opsi2.png"
+            action Return("angry")
+
+        imagebutton:
+            idle "opsi3.png"
+            action Return("confused")
+
+label asl_response:
+    $ response = renpy.call_screen("asl_dialogue")
+    if response == "right":
+        show c3maskneutral
+        d "She seems fine.."
+        $ trust_c3 += 10
+        $ aggression_c3 -= 5 
+        jump claraconvo
+    elif response == "angry":
+        show c3maskserious
+        d "She seems angry.."
+        $ trust_c3 -= 10
+        $ aggression_c3 += 10
+        $ mental_health_c3 -= 5
+        jump asl_dialogue
+    else:
+        show c3maskworried
+        d "Is that even a language..."
+        $ trust_c3 -= 10
+        $ mental_health_c3 -= 5
+        jump asl_dialogue
+
+#di sini masih perlu if else kalo trust dan aggression di titik tertentu, bikin label baru bad ending dibunuh atau clara bunuh diri
+
+label claraconvo:
+    scene bgdefault
+    show mcsmile at right_pos
+    show c3maskneutral at left_pos
+    "Since then, they started to communicate in sign language, with Doherty speaking in words to make sure Beet still in the same boat."
+    show darkenc3 at left_pos
+    p "So.. What's your name?"
+    hide darkenc3
+    show darkenmc at right_pos
+    c "I'm Clara."
+    show darkenc3 at left_pos
+    hide darkenmc
+    p "So.. Clara. We're trying to get to the top of the tower. Can you help us?"
+    "She nods softly."
+    hide mcsmile
+    show c1 confused at right_pos
+    d "I'm sorry but.. Can I ask... Are you just deaf or you "
+
+    "..."
+    "She lowers her head. Then slowly, she opens her mouth."
+
+    c "...m-my.. v-voice.. is weird..."
+
+    d "(laughs) Hah... what even was that supposed to be?"
+
+    show c3maskworried
+    "Her expression fades. She pulls out her small notebook."
+
+    p "Wait..."
+
+    scene cutscenec3
+
+    "Haha what is this? Are you expecting us to learn all of those?"
+
+    scene bgblack
+
+    "*Scrap*"
+
+    scene cutscenec3
+
+    c "n-no.. p-p.. please.."
+    "What the hell is that voice? That's so weird and ugly hahaha!"
+
+    scene bgblack
+    pause
+
+    scene bgdefault
+    #lanjutin aj
+
+    jump ending_scene
+

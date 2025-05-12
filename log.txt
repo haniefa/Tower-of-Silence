@@ -1,22 +1,22 @@
-2025-05-11 17:36:18 UTC
+2025-05-12 06:58:53 UTC
 Windows-10-10.0.19045
 Ren'Py 8.3.7.25031702
 
-Early init took 0.09s
-Loading error handling took 0.05s
-Loading script took 0.36s
-Loading save slot metadata took 0.06s
+Early init took 0.21s
+Loading error handling took 0.10s
+Loading script took 1.16s
+Loading save slot metadata took 0.18s
 Loading persistent took 0.00s
-Running init code took 0.06s
-Loading analysis data took 0.02s
+Running init code took 0.17s
+Loading analysis data took 0.05s
 Analyze and compile ATL took 0.00s
-Reloading save slot metadata took 0.03s
+Reloading save slot metadata took 0.06s
 Index archives took 0.00s
 Backing up script files to 'C:\\Users\\Administrator\\AppData\\Roaming/RenPy/backups\\Tower-of-Silence':
-Dump and make backups took 0.06s
+Dump and make backups took 0.15s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc took 0.04s
+Initial gc took 0.07s
 DPI scale factor: 1.500000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: b"Couldn't load nvlib." (can be ignored)
@@ -25,13 +25,13 @@ Cleaning stores took 0.00s
 Init translation took 0.00s
 Build styles took 0.00s
 Load screen analysis took 0.02s
-Analyze screens took 0.01s
-Save screen analysis took 0.02s
-Prepare screens took 0.07s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.03s
+Analyze screens took 0.03s
+Save screen analysis took 0.04s
+Prepare screens took 0.15s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.06s
 Running _start took 0.00s
-Interface start took 0.34s
+Interface start took 0.84s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1920, 1080)
@@ -43,10 +43,17 @@ Version: b'4.6.14761 Compatibility Profile Context 21.30.44.14 30.0.13044.14002'
 Display Info: None
 Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(1920, 1080)
 Maximum texture size: 4096x4096
-Cleaning stores took 0.00s
-Init translation took 0.00s
-Build styles took 0.00s
-Load screen analysis took 0.04s
-Analyze screens took 0.00s
-Prepare screens took 0.00s
-Running _start took 0.00s
+
+Full traceback:
+  File "game/script.rpy", line 1396, in script
+    jump ending_scene
+  File "D:\Program Files\renpy\renpy-8.3.7-sdk\renpy\ast.py", line 1712, in execute
+    rv = renpy.game.script.lookup(target)
+  File "D:\Program Files\renpy\renpy-8.3.7-sdk\renpy\script.py", line 1103, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'ending_scene'.
+
+While running game code:
+  File "game/script.rpy", line 1396, in script
+    jump ending_scene
+ScriptError: could not find label 'ending_scene'.
