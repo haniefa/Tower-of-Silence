@@ -89,6 +89,7 @@ image c3 serious = "C3_serious.png"
 image c3 shocked = "C3_shocked.png"
 image c3 smile = "C3_smile.png"
 image c3 worried = "C3_worried.png"
+image c3 grateful = "C3_grateful.png"
 
 image c3 mask neutral = "C3_maskneutral.png"
 image c3 mask scared = "C3_maskscared.png"
@@ -1678,7 +1679,7 @@ label ending_scene:
         show mc smile at left_pos
         show c3 smile at right_pos
         show darkenc3 at right_pos
-        "I sign to her agan"
+        "I sign to her again"
         p "So, do you want to find a way out of here, with us?"
         hide c3
         show c3 serious at right_pos
