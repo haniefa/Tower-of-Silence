@@ -1,22 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 1627, in script
-    jump bad_ending_clara
-ScriptError: could not find label 'bad_ending_clara'.
+  File "game/script.rpy", line 1952, in script
+    jump credits
+ScriptError: could not find label 'credits'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 1627, in script
-    jump bad_ending_clara
-  File "C:\Users\Arry\Downloads\renpy-8.3.7-sdk\renpy\ast.py", line 1712, in execute
+  File "game/script.rpy", line 1952, in script
+    jump credits
+  File "D:\Program Files\renpy\renpy-8.3.7-sdk\renpy\ast.py", line 1712, in execute
     rv = renpy.game.script.lookup(target)
-  File "C:\Users\Arry\Downloads\renpy-8.3.7-sdk\renpy\script.py", line 1103, in lookup
+  File "D:\Program Files\renpy\renpy-8.3.7-sdk\renpy\script.py", line 1103, in lookup
     raise ScriptError("could not find label '%s'." % str(original))
-ScriptError: could not find label 'bad_ending_clara'.
+ScriptError: could not find label 'credits'.
 
-Windows-10-10.0.22631 AMD64
+Windows-10-10.0.19045 AMD64
 Ren'Py 8.3.7.25031702
 Tower of Silence 1.0
-Mon May 12 16:21:21 2025
+Mon May 12 21:00:05 2025

@@ -31,8 +31,8 @@ image mc shocked = "MC_shocked.png"
 image mc worried = "MC_worried.png"
 image mc blush = "MC_blush.png"
 image mc mad = "MC_mad.png"
-image mc sad = "MC_sad.png"
-image mc grateful = "MC_grateful.png"
+image mc cry = "mc_cry.png"
+image mc grateful = "mc_grateful.png"
 
 image scenealtar = "scene_sign.png"
 image scenepuzzle1 = "scene_puzzle1.png"
@@ -1809,7 +1809,7 @@ label final_chapter:
 
     show darkenc2 at right_pos
     hide mc
-    show mc worried # Kalo udah ada dia nangis, ganti ini jadi mc crying
+    show mc cry 
     hide darkenmc
 
     p "...No...There's no way. I haven't died yet! I'm sure of it."
@@ -1845,7 +1845,7 @@ label final_chapter:
     d "You're the only one who showed us all of that."
     
     hide c1
-    show mc smile # Ini change to mc grateful
+    show mc grateful 
     "Sobbing."
     p "You guys... Thank you."
 
@@ -1882,7 +1882,7 @@ label final_chapter:
     "Doherty, Betelgeuse and Clara hold hands and surrounds me. A few moments later, a bright beam appeared from the ground, engulfing me."
 
     scene final_room
-    show mc smile # ganti jadi mc grateful
+    show mc grateful
     with dissolve
 
     "Sobbing"
@@ -1898,11 +1898,15 @@ label final_chapter:
     show darkenc1 at left_pos
     b "But not too soon, I hope!"
 
-    hide c1, c2, c3, darkenc1, darkenc3
-    show mc smile # ganti jadi mc grateful
+    hide c1
+    hide c2
+    hide c3
+    hide darkenc1
+    hide darkenc3
+    show mc grateful
 
     "We have a little giggle."
-    show mc smile at left_pos # ganti jadi mc grateful
+    show mc grateful at left_pos 
     show c3 grateful at right_pos
     "As I was about to teleport, Clara suddenly gave me a hug"
 
@@ -1946,5 +1950,4 @@ label final_chapter:
     "I won't let my bi-polar disorder get the best of me!"
 
     jump credits
-
     return
